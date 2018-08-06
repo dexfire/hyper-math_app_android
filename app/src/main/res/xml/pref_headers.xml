@@ -14,7 +14,7 @@
 
     <header
         android:fragment="work.mathwiki.activities.SettingsActivity$DataSyncPreferenceFragment"
-        android:icon="@drawable/ic_sync_black"
+        android:icon="@drawable/ic_sync"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>
