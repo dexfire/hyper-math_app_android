@@ -8,6 +8,8 @@
     <color name="bg_main">#ffeaeaea</color>
 
     <!-- General Colors -->
+    <color name="red">#ffff0000</color>
+    <color name="red_dark">#ff990000</color>
     <color name="black">#ff000000</color>
     <color name="black_deep">#ff1e1e1e</color>
     <color name="black_gray">#ff626262</color>
