@@ -1,14 +1,14 @@
 package work.mathwiki;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,20 +16,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import work.mathwiki.activities.SettingsActivity;
-import work.mathwiki.utility.WikiWebViewClient;
+import work.mathwiki.fragments.BrowserFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private TextView mTextMessage;
-    private WebView mWebView;
-    DrawerLayout mDrawerLayout;
-
+    private DrawerLayout mDrawerLayout;
+    private Fragment currentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,24 +52,15 @@ public class MainActivity extends AppCompatActivity
         navigation.setAnimation(null);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        mWebView = findViewById(R.id.main_webview);
-        initWebView();
-        mWebView.loadUrl("file://+" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.main_container,new BrowserFragment(),BrowserFragment.TAG)
+        .addToBackStack(null)
+        .commitNowAllowingStateLoss();
+
+        showFragment(BrowserFragment.TAG);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void initWebView() {
-        WikiWebViewClient mWebClient = new WikiWebViewClient();
-        mWebView.setWebViewClient(mWebClient);
-        WebSettings  webSettings = mWebView.getSettings();
-        webSettings.setAllowFileAccess(true);
-        webSettings.setAllowContentAccess(true);
-        webSettings.setAllowFileAccessFromFileURLs(true);
-        webSettings.setAllowUniversalAccessFromFileURLs(true);
-        // 可能引发跨站脚本攻击(XSS)
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -133,6 +121,26 @@ public class MainActivity extends AppCompatActivity
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void showFragment(String tag){
+        showFragment(getSupportFragmentManager().findFragmentByTag(tag));
+    }
+
+    private void showFragment(Fragment fragment){
+        if(fragment!=null){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            if(currentFragment!=null&&currentFragment.isAdded()&&!currentFragment.isHidden()) transaction.hide(currentFragment);
+            if(fragment.isAdded()){
+                transaction.show(fragment);
+            }else{
+                transaction.add(R.id.container,fragment,fragment.getTag()).show(fragment);
+            }
+            currentFragment = fragment;
+            transaction.addToBackStack(null);
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

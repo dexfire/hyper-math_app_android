@@ -20,14 +20,15 @@
     <string name="title_share">分享</string>
     <string name="title_about">关于...</string>
 
-
     <string name="login">登录</string>
     <string name="register">注册</string>
     <string name="downloading">下载</string>
     <string name="download">下载</string>
     <string name="update">更新</string>
-
+    <string name="gotoo">转到</string>
     <string name="notification_test">This is a test string!</string>
+
+    <string name="edit_text_hint_address">files:///sdcard/MathWiki/index.html</string>
 
     <string name="plugin_mathjax">Mathjax公式插件</string>
     <string name="plugin_bootstrap">Bootstrap主题插件</string>
@@ -42,7 +43,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MathWiki 高数学习手册</string>
     <string name="title_activity_settings">Settings</string>
-
 
 
     <!-- Strings related to Settings -->

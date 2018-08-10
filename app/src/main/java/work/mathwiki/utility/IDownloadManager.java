@@ -4,13 +4,14 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 
+import retrofit2.Retrofit;
+
 /**
  * Created by Dexfire on 2018/8/5 0005.
  */
 
 public class IDownloadManager {
-
-
+    private static final String baseUrl = "http://";
     private static IDownloadManager singleInstance = null;
     private static Context context;
     public static IDownloadManager getInstance(Context context) {
@@ -22,6 +23,10 @@ public class IDownloadManager {
     }
 
     private IDownloadManager(Context context) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+
+                .build();
     }
 
     public static void downloadWithSystemDM(String link){
