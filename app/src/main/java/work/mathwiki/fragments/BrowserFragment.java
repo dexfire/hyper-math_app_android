@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import work.mathwiki.R;
 import work.mathwiki.utility.LocalWebViewClient;
@@ -24,6 +26,8 @@ public class BrowserFragment extends Fragment {
 
     public static final String TAG = "BrowserFragment";
     private WebView  mWebView;
+    private EditText mAdressText;
+    private Button mButtonGoto;
     public BrowserFragment() {
         super();
     }
@@ -38,6 +42,17 @@ public class BrowserFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mWebView = view.findViewById(R.id.fragment_browser_webview);
+        mAdressText = view.findViewById(R.id.fragment_browser_edittext_addr);
+        mButtonGoto = view.findViewById(R.id.fragment_browser_btn_goto);
+        mAdressText.setText("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
+        mButtonGoto.setOnClickListener(v ->{
+            mWebView.loadUrl(mAdressText.getText().toString());
+        });
+    }
+
+    @Override
+    public void setAllowReturnTransitionOverlap(boolean allow) {
+        super.setAllowReturnTransitionOverlap(false);
     }
 
     @Override
@@ -49,7 +64,7 @@ public class BrowserFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initWebView();
-        mWebView.loadUrl("file://+" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
+        mWebView.loadUrl("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
     }
 
     @Override
@@ -69,6 +84,9 @@ public class BrowserFragment extends Fragment {
         // 可能引发跨站脚本攻击(XSS)
         webSettings.setJavaScriptEnabled(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setDisplayZoomControls(false);
     }
-
 }
