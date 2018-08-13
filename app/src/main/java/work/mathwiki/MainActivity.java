@@ -16,49 +16,58 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
 import android.webkit.WebView;
 import android.widget.TextView;
 
 import work.mathwiki.activities.SettingsActivity;
 import work.mathwiki.fragments.BrowserFragment;
+import work.mathwiki.utility.AppUpdateManager;
+import work.mathwiki.utility.PermissionUtility;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private TextView mTextMessage;
+
+    public static final String APP_TAG = "MathWiki";
     private DrawerLayout mDrawerLayout;
     private Fragment currentFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
+    FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+            .setAction("Action", null).show());
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+    mDrawerLayout = findViewById(R.id.drawer_layout);
+    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.bottom_navigation);
+    NavigationView navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setNavigationItemSelectedListener(this);
-        mTextMessage = findViewById(R.id.message);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setAnimation(null);
+    BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setStateListAnimator(null);
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    //TODO : check permission of storage usage
+    PermissionUtility.checkAllNeededPermissions(this);
+    //TODO : check update
+    AppUpdateManager.get();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.main_container,new BrowserFragment(),BrowserFragment.TAG)
-        .addToBackStack(null)
-        .commitNowAllowingStateLoss();
-
-        showFragment(BrowserFragment.TAG);
-    }
+            //.addToBackStack(null)
+            .commitNowAllowingStateLoss();
+    getSupportFragmentManager().executePendingTransactions();
+    showFragment(BrowserFragment.TAG);
+}
 
 
 
@@ -142,22 +151,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_context:
-                    mTextMessage.setText(R.string.title_context);
-                    return true;
-                case R.id.navigation_toybox:
-                    mTextMessage.setText(R.string.title_toybox);
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        //TODO : 跳转逻辑
+                        return true;
+                    case R.id.navigation_context:
+                        return true;
+                    case R.id.navigation_toybox:
+                        return true;
+                }
+                return false;
+            };
 }
