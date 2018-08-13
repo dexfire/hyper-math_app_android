@@ -1,6 +1,8 @@
 package work.mathwiki.utility;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.webkit.RenderProcessGoneDetail;
@@ -9,15 +11,42 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.File;
+
+
 /**
  * Created by Dexfire on 2018/8/10 0010.
  */
 
 public class LocalWebViewClient extends WebViewClient {
 
+    private static final String TAG = "LocalWebViewClient";
+    private static final String baseLocalUrl = "file://"+Environment.getExternalStorageDirectory() + "/MathWiki/";
+    private static final String basePath = Environment.getExternalStorageDirectory() + "/MathWiki/";
+
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        return super.shouldOverrideUrlLoading(view, request);
+        Uri url = request.getUrl();
+        // @Debug mode
+        android.util.Log.i(TAG,"overloadedOriginURL: "+url.toString());
+        android.util.Log.i(TAG,"url.getScheme: : "+url.getScheme());
+        android.util.Log.i(TAG,"url.getPathSegments: "+url.getPathSegments());
+        if(url.getScheme().equals("file") && !url.toString().startsWith(baseLocalUrl)){
+            view.loadUrl(baseLocalUrl +url.getPath());
+        } else if(!url.getPath().endsWith(".html")){
+            if(url.getPath().endsWith("/"))
+                view.loadUrl(baseLocalUrl +url.toString()+"/index.html");
+            else
+                view.loadUrl(baseLocalUrl +url.toString()+"index.html");
+        }
+
+        return true;
+        //return super.shouldOverrideUrlLoading(view, request);
+    }
+
+    @Override
+    public void onLoadResource(WebView view, String url) {
+        super.onLoadResource(view, url);
     }
 
     @Override
@@ -58,5 +87,42 @@ public class LocalWebViewClient extends WebViewClient {
     @Override
     public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
         return super.onRenderProcessGone(view, detail);
+    }
+
+    /***
+     * 实现类似本地服务器的功能
+     * 如果访问的是一个目录，则跳转到这个目录下的index.html
+     * 如果访问的文件不存在，跳转到404.html
+     * 如果文件是其他类型，
+     * @param url
+     * @return 重定向后的url
+     */
+    private String urlRedirect(Uri url){
+        // @Debug mode
+        android.util.Log.i(TAG,"overloadedOriginURL: "+url.toString());
+        android.util.Log.i(TAG,"url.getScheme: : "+url.getScheme());
+        android.util.Log.i(TAG,"url.getPathSegments: "+url.getPathSegments());
+        if(url.getScheme().equals("file")){
+            File file = new File(basePath + url.getPath());
+            if(file.exists()){
+                if(file.isDirectory()){
+                    return "file://"+file.getAbsolutePath()+"index.html";
+                }else{
+                    return "file://"+file.getAbsolutePath();
+                }
+            }else{
+                return baseLocalUrl+"index.html";
+            }
+        }
+
+//        if(url.getScheme().equals("file") && !url.toString().startsWith(baseLocalUrl)){
+//            view.loadUrl(baseLocalUrl +url.getPath());
+//        } else if(!url.getPath().endsWith(".html")){
+//            if(url.getPath().endsWith("/"))
+//                view.loadUrl(baseLocalUrl +url.toString()+"/index.html");
+//            else
+//                view.loadUrl(baseLocalUrl +url.toString()+"index.html");
+//        }
+        return null;
     }
 }
