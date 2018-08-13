@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Basic Function Colors -->
-    <color name="colorAccent">@color/blue_theme</color>
+    <color name="colorAccent">@color/color_pink</color>
     <color name="colorPrimary">@color/blue_theme</color>
-    <color name="colorPrimaryDark">@color/blue_theme</color>
+    <color name="colorPrimaryDark">@color/blue_dark</color>
     <color name="bg_main">#ffeaeaea</color>
 
     <!-- General Colors -->
@@ -12,7 +12,7 @@
     <color name="red_dark">#ff990000</color>
     <color name="black">#ff000000</color>
     <color name="black_deep">#ff1e1e1e</color>
-    <color name="black_gray">#ff626262</color>
+    <color name="black_gray">#626262</color>
     <color name="black_light">#ff212121</color>
     <color name="black_translucent">#80000000</color>
     <color name="black_transparent">#aa000000</color>
@@ -34,14 +34,16 @@
     <color name="blue_tab_underline">#ff42ccff</color>
     <color name="blue_theme">#ff23aee6</color>
     <color name="blue_title">#ff4fc1e9</color>
-
-    <!-- Colors for theme bilipink -->
     <color name="theme_blue_colorAccent">@color/blue_theme</color>
     <color name="theme_blue_colorPrimary">@color/blue_theme</color>
     <color name="theme_blue_colorPrimaryDark">@color/blue_theme</color>
+
+    <!-- Colors for theme bilipink -->
+    <color name="color_pink">#fffb7299</color>
     <color name="theme_pink_color_secondary">#fffb7299</color>
     <color name="theme_pink_color_secondary_dark">#ffb85671</color>
     <color name="theme_pink_color_dialog_title"></color>
+    <color name="theme_pink_color_alpha_AA">#aafb7299</color>
 
 
     <color name="daynight_color_text_body_secondary_dark">#ff505050</color>

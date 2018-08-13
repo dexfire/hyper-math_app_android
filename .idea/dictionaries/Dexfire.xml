@@ -1,11 +1,15 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Dexfire">
     <words>
+      <w>addr</w>
+      <w>addrtext</w>
       <w>bilipink</w>
+      <w>edittext</w>
       <w>github</w>
       <w>gotoo</w>
       <w>mathjax</w>
       <w>mathwiki</w>
+      <w>okhttp</w>
       <w>textview</w>
       <w>toybox</w>
       <w>viewgroup</w>

@@ -46,6 +46,13 @@
 
 
     <!-- Strings related to Settings -->
+    <string name="permission_apply">权限申请</string>
+    <string-array name="permissions_notation">
+        <item>我们需要读取存储卡数据。</item>
+        <item>我们需要写入存储卡数据。</item>
+        <item>获取您的唯一标识信息能帮助我们提升用户体验，这不是必选项。</item>
+    </string-array>
+
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>

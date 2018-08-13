@@ -16,4 +16,5 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="default_margin">10dp</dimen>
+    <dimen name="bottom_navi_bar_height">6dp</dimen>
 </resources>

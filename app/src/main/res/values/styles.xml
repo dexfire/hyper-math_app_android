@@ -1,6 +1,16 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
+        <item name="android:navigationBarColor">@color/theme_pink_color_alpha_AA</item>
+        <item name="android:colorForeground">@color/black_gray</item>
+    </style>
+
     <style name="BiliPink" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -20,7 +30,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
     </style>
-
+    <style name="Widget.Design.BottomNavigationView" tools:override="true">
+        <item name="itemBackground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="elevation">@dimen/design_bottom_navigation_elevation</item>
+    </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -28,5 +41,7 @@
     <style name="BiliPink.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="BiliPink.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="GoogleDarkBlue" parent="AppTheme" />
 
 </resources>
