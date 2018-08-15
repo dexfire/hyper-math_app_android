@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch(id){
             case R.id.nav_home:
+                showFragment(BrowserFragment.TAG);
                 break;
             case R.id.nav_context:
                 break;
