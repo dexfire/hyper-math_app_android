@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/settings_container"
+        android:orientation="vertical">
+        <include layout="@layout/layout_titlebar"/>
+        <TextView
+            style="@style/AppTheme.SettingCategoryText"
+            android:id="@+id/settings_categoryText_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_category_general"/>
+        <LinearLayout
+            android:id="@+id/settings_general"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <RelativeLayout
+                android:id="@+id/settings_general_"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_container_height">
+                <TextView
+                    android:text="@string/settings_general_allow_mobile_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+            <View
+                android:background="?diliver_line_color1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_line_height_normal" />
+            <RelativeLayout
+                android:id="@+id/settings_general_autoUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_container_height">
+                <TextView
+                    android:text="@string/settings_general_allow_mobile_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LineDivider">
+        <attr name="line_color" format="color"/>
+        <attr name="margin" format="dimension"/>
+        <attr name="margin_left" format="dimension"/>
+        <attr name="padding" format="dimension"/>
+    </declare-styleable>
+    <attr name="theme_color" format="color" />
+    <attr name="diliver_line_color1" format="color" />
+    <attr name="common_dock_bg" format="color" />
+    <attr name="common_bg" format="color" />
+
+</resources>

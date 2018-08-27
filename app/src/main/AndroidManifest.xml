@@ -24,12 +24,22 @@
             android:theme="@style/BiliPink.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".activities.WelcomeGuideActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_welcome_guide"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".activities.CollectionsActivity"
+            android:label="@string/title_activity_collectings"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

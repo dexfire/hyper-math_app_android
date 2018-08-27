@@ -1,6 +1,7 @@
 package work.mathwiki.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -35,6 +37,8 @@ public class BrowserFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //Activity activity =  getActivity();
+        //if(activity!=null) activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return inflater.inflate(R.layout.fragment_browser,container,false);
     }
 
@@ -72,10 +76,15 @@ public class BrowserFragment extends Fragment {
         super.onDetach();
     }
 
+
+
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         LocalWebViewClient mWebClient = new LocalWebViewClient();
         mWebView.setWebViewClient(mWebClient);
+        //mWebView.setOnScrollChangeListener(mWebViewScollListener);
+
+
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setAllowFileAccess(true);
         webSettings.setAllowContentAccess(true);
@@ -88,5 +97,28 @@ public class BrowserFragment extends Fragment {
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webSettings.setUseWideViewPort(true);
         webSettings.setDisplayZoomControls(false);
+    }
+
+    View.OnScrollChangeListener mWebViewScollListener = new View.OnScrollChangeListener() {
+        @Override
+        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            //TODO: 自动隐藏底部导航和顶部Tab
+        }
+    };
+
+    public boolean canGoBack(){
+        return mWebView.canGoBack();
+    }
+
+    public void goBack(){
+        mWebView.goBack();
+    }
+
+    public boolean canGoForward(){
+        return mWebView.canGoForward();
+    }
+
+    public void goForward(){
+        mWebView.goForward();
     }
 }

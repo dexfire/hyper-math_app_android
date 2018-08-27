@@ -17,4 +17,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="default_margin">10dp</dimen>
     <dimen name="bottom_navi_bar_height">6dp</dimen>
+    <dimen name="titlebar_height">47dp</dimen>
+    <dimen name="divider_line_height_large">0.6dp</dimen>
+    <dimen name="divider_line_height_normal">0.4dp</dimen>
+    <dimen name="divider_line_margin_lr">18dp</dimen>
+    <dimen name="settings_item_container_height">40dp</dimen>
 </resources>
