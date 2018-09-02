@@ -16,7 +16,7 @@
         <attr name="padding" format="dimension"/>
     </declare-styleable>
     <attr name="theme_color" format="color" />
-    <attr name="diliver_line_color1" format="color" />
+    <attr name="divider_line_color1" format="color" />
     <attr name="common_dock_bg" format="color" />
     <attr name="common_bg" format="color" />
 
