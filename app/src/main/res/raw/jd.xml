@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/read_setting_gray_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/lin_content" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/view_pdf_top" android:background="@color/read_setting_gray_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/read_setting_text_gray" android:gravity="bottom" android:background="@color/read_setting_gray_bg" android:paddingLeft="15.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/font" />
+            <LinearLayout android:orientation="vertical" android:id="@id/setting_fontface" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <View android:background="@color/read_setting_gray_bg" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lin_importFont" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/image_importFont" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="8.0dip" android:src="@mipmap/icon_add_typeface" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/day_red" android:gravity="center" android:id="@id/importFont" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="@string/importLocalFont" />
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <View android:background="@color/read_setting_gray_bg" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/lin_page_animation" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/PageAnimation" android:layout_weight="0.89" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/read_setting_text_gray1" android:gravity="center_vertical" android:id="@id/text_page_animation" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/PageAnimationDefault" android:drawableRight="@mipmap/icon_right_arrow" android:drawablePadding="11.0dip" />
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/lin_screen_close_time" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/screen_turn_off_time" android:layout_weight="1.0" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/read_setting_text_gray1" android:gravity="center_vertical" android:id="@id/text_close_time" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="5分钟" android:drawableRight="@mipmap/icon_right_arrow" android:drawablePadding="11.0dip" />
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/lin_notice_time" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/rest_notice_time" android:layout_weight="1.0" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/read_setting_text_gray1" android:gravity="center_vertical" android:id="@id/text_notice_time" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="45分钟" android:drawableRight="@mipmap/icon_right_arrow" android:drawablePadding="11.0dip" />
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <View android:background="@color/read_setting_gray_bg" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/volumeChangePageLayout" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/userVolumeChangePage" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_width="38.0dip" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/switch_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/switchoff_line_standard" />
+                    <ImageView android:id="@id/switchOn_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchon_dot_standard" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@id/switchOff_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchoff_dot_standard" android:layout_alignParentLeft="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/page_turn_both_sides_Layout" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/textView" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/pageTurnBothSidesLayoutString" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_width="38.0dip" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/page_turn_botn_switch_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/switchoff_line_standard" />
+                    <ImageView android:id="@id/page_turn_botn_switchOn_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchon_dot_standard" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@id/page_turn_botn_switchOff_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchoff_dot_standard" android:layout_alignParentLeft="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/show_status_bar_system_layout" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/showStatusBarSystemString" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_width="38.0dip" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/show_status_bar_system_switch_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/switchoff_line_standard" />
+                    <ImageView android:id="@id/show_status_bar_system_switchOn_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchon_dot_standard" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@id/show_status_bar_system_switchOff_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchoff_dot_standard" android:layout_alignParentLeft="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/auto_download_typeface_layout" android:background="@color/white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/autoDownloadTypeface" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_width="38.0dip" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/auto_download_typeface_switch_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/switchoff_line_standard" />
+                    <ImageView android:id="@id/auto_download_typeface_switchOn_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchon_dot_standard" android:layout_alignParentRight="true" />
+                    <ImageView android:id="@id/auto_download_typeface_switchOff_dot" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@mipmap/switchoff_dot_standard" android:layout_alignParentLeft="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="@color/r_hariline" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <View android:background="@color/read_setting_gray_bg" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

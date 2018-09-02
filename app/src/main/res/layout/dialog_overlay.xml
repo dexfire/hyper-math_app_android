@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/dialog_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/custom_top_bar_height">
+        <ImageView
+            android:id="@+id/dialog_topbar_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_width="@dimen/dialog_topbar_icon_size"
+            android:layout_height="@dimen/dialog_topbar_icon_size" />
+        <TextView
+            android:id="@+id/dialog_topbar_title"
+            android:textSize="@dimen/dialog_topbar_title_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/dialog_content_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dialog_content_min_height"/>
+    <RelativeLayout
+        android:id="@+id/dialog_buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding">
+        <TextView
+            android:id="@+id/dialog_button_right1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/dialog_button_right2"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_toLeftOf="@id/dialog_button_right1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/dialog_button_left1"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/dialog_button_left2"
+            android:layout_toRightOf="@id/dialog_button_left1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>
