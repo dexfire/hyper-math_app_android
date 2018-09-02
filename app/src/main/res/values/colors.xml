@@ -7,6 +7,8 @@
     <color name="colorPrimaryDark">@color/blue_dark</color>
     <color name="bg_main">#ffeaeaea</color>
     <color name="seprate_line_color_grey">@color/black_gray</color>
+    <color name="back_color_sel">#7fcccccc</color>
+
     <!-- General Colors -->
 
     <color name="red">#ffff0000</color>
@@ -25,6 +27,18 @@
     <color name="gray_background">#fff6f6f7</color>
     <color name="whiteyellow">#FFFFFFF0</color>
 
+    <!-- Featured Colors -->
+    <color name="biliPink">#fb7299</color>
+    <color name="nodejsGreen">#43853d</color>
+    <color name="msGreen">#81BC06</color>
+    <color name="msBlue">#05A6F0</color>
+    <color name="msYellow">#FFBA08</color>
+    <color name="msRed">#F35325</color>
+    <color name="vsPurple">#373277</color>
+    <color name="vsGreen">#477A32</color>
+    <color name="tvGreen">#96C322</color>
+    <color name="ubuntuOrange">#E95420</color>
+    <color name="ubuntuPurple">#5E2750</color>
 
     <!-- Colors for blue theme -->
     <color name="blue">#ff21c1fc</color>
@@ -51,6 +65,13 @@
     <color name="theme_pink_color_dialog_title"></color>
     <color name="theme_pink_color_alpha_AA">#aafb7299</color>
 
+
+    <!-- Colors for TopBarView -->
+    <color name="custom_top_bar_background_color">#fffcfcfc</color>
+    <color name="custom_top_bar_bottom_divider_color">#ffbfbfbf</color>
+    <color name="custom_top_bar_menu_item_font_color">#ffd9414e</color>
+    <color name="custom_top_bar_menu_item_font_color1">#ffceebce</color>
+    <color name="custom_top_bar_menu_red_dot_font_color">#ffffffff</color>
 
     <color name="daynight_color_text_body_secondary_dark">#ff505050</color>
     <color name="daynight_color_text_body_secondary_light">#ff757575</color>

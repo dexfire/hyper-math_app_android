@@ -1,4 +1,4 @@
-package work.mathwiki;
+package work.mathwiki.style;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

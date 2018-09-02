@@ -23,7 +23,7 @@
             android:layout_margin="@dimen/default_margin"
             android:ems="10" />
 
-        <Button
+        <TextView
             android:id="@+id/fragment_browser_btn_goto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <WebView
-        android:id="@+id/fragment_browser_webview"
+        android:id="@+id/layout_index_webview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"

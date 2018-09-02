@@ -1,4 +1,4 @@
-package work.mathwiki.utility;
+package work.mathwiki.updater;
 
 /**
  * Created by Dexfire on 2018/8/13 0013.

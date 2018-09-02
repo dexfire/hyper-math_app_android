@@ -1,14 +1,11 @@
-package work.mathwiki.utility;
+package work.mathwiki.core.network;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.security.cert.Certificate;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -88,6 +85,7 @@ public class IDownloadManager {
     public static void downloadWithSystemDM(String link){
 
         Uri uri =  Uri.parse(link);
+
 //        if(uri.isHierarchical())
 //        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
 //        dm.enqueue(new DownloadManager.Request());

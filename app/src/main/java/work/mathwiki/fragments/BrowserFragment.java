@@ -1,7 +1,6 @@
 package work.mathwiki.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,14 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
 import work.mathwiki.R;
-import work.mathwiki.utility.LocalWebViewClient;
+import work.mathwiki.core.network.LocalWebViewClient;
 
 /***
  *  A Fragment shows a Browser to the User
@@ -39,16 +37,16 @@ public class BrowserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Activity activity =  getActivity();
         //if(activity!=null) activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        return inflater.inflate(R.layout.fragment_browser,container,false);
+        return inflater.inflate(R.layout.layout_index,container,false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mWebView = view.findViewById(R.id.fragment_browser_webview);
+        mWebView = view.findViewById(R.id.webview);
         mAdressText = view.findViewById(R.id.fragment_browser_edittext_addr);
         mButtonGoto = view.findViewById(R.id.fragment_browser_btn_goto);
-        mAdressText.setText("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
+        mAdressText.setText("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/home.html");
         mButtonGoto.setOnClickListener(v ->{
             mWebView.loadUrl(mAdressText.getText().toString());
         });
@@ -68,7 +66,7 @@ public class BrowserFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initWebView();
-        mWebView.loadUrl("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/index.html");
+        mWebView.loadUrl("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/home.html");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package work.mathwiki.utility;
+package work.mathwiki.core.network;
 
 import android.net.Uri;
 import android.os.Environment;

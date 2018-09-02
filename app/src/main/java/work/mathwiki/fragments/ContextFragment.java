@@ -29,12 +29,12 @@ public class ContextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_context, container, false);
+        return inflater.inflate(R.layout.layout_context, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mWebView = view.findViewById(R.id.context_webview);
+        mWebView = view.findViewById(R.id.webview);
         super.onViewCreated(view, savedInstanceState);
     }
 

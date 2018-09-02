@@ -1,4 +1,4 @@
-package work.mathwiki.utility;
+package work.mathwiki.core.network;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -35,9 +35,9 @@ public class LocalWebViewClient extends WebViewClient {
             view.loadUrl(baseLocalUrl +url.getPath());
         } else if(!url.getPath().endsWith(".html")){
             if(url.getPath().endsWith("/"))
-                view.loadUrl(baseLocalUrl +url.toString()+"/index.html");
+                view.loadUrl(baseLocalUrl +url.toString()+"/home.html");
             else
-                view.loadUrl(baseLocalUrl +url.toString()+"index.html");
+                view.loadUrl(baseLocalUrl +url.toString()+"home.html");
         }
 
         return true;
@@ -106,12 +106,12 @@ public class LocalWebViewClient extends WebViewClient {
             File file = new File(basePath + url.getPath());
             if(file.exists()){
                 if(file.isDirectory()){
-                    return "file://"+file.getAbsolutePath()+"index.html";
+                    return "file://"+file.getAbsolutePath()+"home.html";
                 }else{
                     return "file://"+file.getAbsolutePath();
                 }
             }else{
-                return baseLocalUrl+"index.html";
+                return baseLocalUrl+"home.html";
             }
         }
 
@@ -119,9 +119,9 @@ public class LocalWebViewClient extends WebViewClient {
 //            view.loadUrl(baseLocalUrl +url.getPath());
 //        } else if(!url.getPath().endsWith(".html")){
 //            if(url.getPath().endsWith("/"))
-//                view.loadUrl(baseLocalUrl +url.toString()+"/index.html");
+//                view.loadUrl(baseLocalUrl +url.toString()+"/home.html");
 //            else
-//                view.loadUrl(baseLocalUrl +url.toString()+"index.html");
+//                view.loadUrl(baseLocalUrl +url.toString()+"home.html");
 //        }
         return null;
     }

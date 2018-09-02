@@ -1,4 +1,4 @@
-package work.mathwiki.utility;
+package work.mathwiki.core.logger;
 
 import android.util.Log;
 

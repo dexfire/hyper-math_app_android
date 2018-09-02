@@ -1,4 +1,4 @@
-package work.mathwiki;
+package work.mathwiki.updater;
 
 import android.app.Service;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.content.res.Configuration;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import work.mathwiki.utility.Logger;
+import work.mathwiki.core.logger.Logger;
 
 /**
  * Created by s2751 on 2018/8/25 0025.

@@ -1,9 +1,12 @@
 package work.mathwiki.utility;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.annotation.DrawableRes;
@@ -44,32 +47,12 @@ public class NotificationUtility {
         notificationManager.notify(2018,notification);
     }
 
-    public static void makeDialogNotification(Context context,String title, String subtitle, int type){
-        AppCompatDialog dialog = new AppCompatDialog(context);
-        TextView textView;
-        switch (type){
-            case DIALOG_NOTIFICATION_PERMISSION_GRANT:
-                dialog.supportRequestWindowFeature(Window.FEATURE_LEFT_ICON);
-                dialog.setFeatureDrawable(Window.FEATURE_LEFT_ICON,context.getDrawable(R.drawable.ic_circle));
-                dialog.setTitle(R.string.permission_apply);
-                textView = new TextView(context);
-                textView.setText(subtitle);
-                dialog.setContentView(textView);
-                dialog.setCancelable(true);
-                break;
-            default:
-//                dialog.supportRequestWindowFeature(AppCompatDialog.BUTTON_POSITIVE);
-//                dialog.supportRequestWindowFeature(AppCompatDialog.BUTTON_NEGATIVE);
-//                dialog.setFeatureDrawable(AppCompatDialog.BUTTON_POSITIVE,context.getDrawable(R.drawable.ic_circle));
-//                dialog.setFeatureDrawable(AppCompatDialog.BUTTON_NEGATIVE,context.getDrawable(R.drawable.ic_clear));
-                dialog.setTitle(title);
-                dialog.setContentView(android.R.layout.select_dialog_item);
-                textView = dialog.findViewById(android.R.id.text1);
-                if(textView!=null)
-                    textView.setText(R.string.notification_test);
-                dialog.setCancelable(true);
-        }
-        dialog.show();
+    public static void makeDialogNotification(Context context,String title, String message){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog dialog = builder.setTitle(title).setMessage(message).setPositiveButton("确定", (dialog1, which) -> {
+            dialog1.dismiss();
+        }).show();
     }
 
     public void makeShortToast(Context context,String text){

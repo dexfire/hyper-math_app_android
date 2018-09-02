@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppTheme.NoActionBar">
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -25,11 +27,12 @@
                 android:layout_height="@dimen/settings_item_container_height">
                 <TextView
                     android:text="@string/settings_general_allow_mobile_download"
+                    style="@style/AppTheme.SettingItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </RelativeLayout>
             <View
-                android:background="?diliver_line_color1"
+                android:background="?divider_line_color1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_line_height_normal" />
             <RelativeLayout
@@ -38,6 +41,21 @@
                 android:layout_height="@dimen/settings_item_container_height">
                 <TextView
                     android:text="@string/settings_general_allow_mobile_download"
+                    style="@style/AppTheme.SettingItemText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>>
+            <View
+                android:background="?divider_line_color1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_line_height_normal" />
+            <RelativeLayout
+                android:id="@+id/settings_general_autoUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_container_height">
+                <TextView
+                    android:text="@string/settings_general_allow_mobile_download"
+                    style="@style/AppTheme.SettingItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </RelativeLayout>>

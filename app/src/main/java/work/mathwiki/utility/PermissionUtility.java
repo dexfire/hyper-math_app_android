@@ -33,7 +33,7 @@ public class PermissionUtility {
     public static boolean checkPermission(Activity activity,String permission,String note){
         int result = PermissionChecker.checkSelfPermission(activity,permission);
         if(result!=PermissionChecker.PERMISSION_GRANTED){
-            NotificationUtility.makeDialogNotification(activity,"",note,NotificationUtility.DIALOG_NOTIFICATION_PERMISSION_GRANT);
+            NotificationUtility.makeDialogNotification(activity,"权限请求",note);
             return dialogPermission(activity,permission);
         }
         return true;

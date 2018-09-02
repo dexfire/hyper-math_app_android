@@ -3,12 +3,10 @@ package work.mathwiki;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Browser;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -16,51 +14,100 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.AlphaAnimation;
+import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import work.mathwiki.activities.SettingsActivity;
 import work.mathwiki.activities.WelcomeGuideActivity;
+import work.mathwiki.core.content.ContentManager;
+import work.mathwiki.core.content.ContentViewsEnum;
+import work.mathwiki.core.data.DataManager;
+import work.mathwiki.core.logger.Logger;
 import work.mathwiki.fragments.BrowserFragment;
-import work.mathwiki.utility.AppUpdateManager;
+import work.mathwiki.updater.AppUpdateManager;
 import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.PermissionUtility;
+import work.mathwiki.utility.WebViewSetup;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+/***
+ *  Hyper-Math
+ *  ========================================
+ *  Author: dexfire, Iris, chen
+ *  Copyright: All Rights Reserved.
+ *
+ * 编程规范：
+ *  1、<em>资源变量名<em/> 命名规则
+ *      大类名 - 小类名 - 标识名
+ *      （倒序 → 一致性不高）
+ *  2、避免使用Fragment
+ *      因为Fragment的bug实在比较多，而且使用效果的却不好。
+ *  3、先搭框架，后期优化+美化
+ */
+
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String APP_TAG = "Hyper-Math";
+
+    private FrameLayout mContainer;
     private DrawerLayout mDrawerLayout;
     private Fragment currentFragment;
     private long last_back_press = 0;
     private int mScreenWidth,mScreenHeight;
+    private Logger log;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        mScreenHeight = displayMetrics.heightPixels;
-        mScreenWidth = displayMetrics.widthPixels;
 
+        // 开启调试信息
+        Logger.setDebug(true);
+        log = Logger.build("MainActivity");
+
+        // TODO : 启动浮窗、非全屏、意蕴&装逼向
+
+        // 判断、启动介绍页
         SharedPreferences preferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean firstStarted =  preferences.getBoolean(ConstFieleds.Preference_Showed_Welcome_Page,false);
-        if(!firstStarted) startActivity(new Intent(getApplicationContext(), WelcomeGuideActivity.class));
+        if(!firstStarted) {
+            log.ii("Starting UserGuideSplashActivity");
+            startActivity(new Intent(this, WelcomeGuideActivity.class));
+        }
+
+        // 布局 Views
+        // 默认显示主页
+        log.dd("Main Activity starting");
+        ContentManager.addView(ContentViewsEnum.home,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_index,null),mIndexCallBacks);
+        ContentManager.addView(ContentViewsEnum.context,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mContextCallBacks);
+        ContentManager.addView(ContentViewsEnum.toys,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mToyBoxCallBacks);
         setContentView(R.layout.activity_main);
+        mContainer = findViewById(R.id.activity_main_container);
+        ContentManager.showContent(ContentViewsEnum.home,mContainer);
+        getWindow().setBackgroundDrawableResource(R.drawable.fab__gradient);
+        log.dd("MainActivity views loaded success!");
+
+        // ActionBar 初始化
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //toolbar.setLogo(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
 
+        // 浮动按钮初始化
         FloatingActionButton fab =  findViewById(R.id.fab);
             fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
 
+        // 侧拉菜单初始化
         mDrawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             mDrawerLayout.addDrawerListener(toggle);
             toggle.syncState();
+
+
+        // 底部导航三键
 
         NavigationView navigationView = findViewById(R.id.bottom_navigation);
             navigationView.setNavigationItemSelectedListener(this);
@@ -68,19 +115,21 @@ public class MainActivity extends AppCompatActivity
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             navigation.setStateListAnimator(null);
 
+
+         // 权限检查
         //TODO : check permission of storage usage
         PermissionUtility.checkAllNeededPermissions(this);
         //TODO : check update
         AppUpdateManager.get();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.main_container,new BrowserFragment(),BrowserFragment.TAG)
-                //.addToBackStack(null)
-                .commitNowAllowingStateLoss();
-        getSupportFragmentManager().executePendingTransactions();
-        showFragment(BrowserFragment.TAG);
+
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.add(R.id.main_container,new BrowserFragment(),BrowserFragment.TAG)
+//                //.addToBackStack(null)
+//                .commitNowAllowingStateLoss();
+//        getSupportFragmentManager().executePendingTransactions();
+//        showFragment(BrowserFragment.TAG);
+
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -102,16 +151,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -122,20 +168,21 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    // region 底部导航栏 点击事件
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle activity_main_navigation view item clicks here.
         int id = item.getItemId();
         switch(id){
             case R.id.nav_home:
-                showFragment(BrowserFragment.TAG);
-
+                ContentManager.showContent(ContentViewsEnum.home,mContainer);
                 break;
             case R.id.nav_context:
-
+                ContentManager.showContent(ContentViewsEnum.context,mContainer);
                 break;
             case R.id.nav_toybox:
+                ContentManager.showContent(ContentViewsEnum.toys,mContainer);
                 break;
             case R.id.nav_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
@@ -146,13 +193,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_share:
                 break;
             case R.id.nav_exit:
+                System.exit(0);
                 break;
         }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+    // endregion
 
+    // region Fragment 辅助
     private Fragment getFragment(String tag){
         return getSupportFragmentManager().findFragmentByTag(tag);
     }
@@ -175,18 +225,99 @@ public class MainActivity extends AppCompatActivity
             transaction.commitNow();
         }
     }
+    // endregion
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         //TODO : 跳转逻辑
+                        ContentManager.showContent(ContentViewsEnum.home,mContainer);
                         return true;
                     case R.id.navigation_context:
+                        ContentManager.showContent(ContentViewsEnum.context,mContainer);
                         return true;
                     case R.id.navigation_toybox:
+                        ContentManager.showContent(ContentViewsEnum.toys,mContainer);
                         return true;
                 }
                 return false;
             };
+
+    // region Content Callbacks
+        // region IndexThings
+    private ContentManager.ContentCallback mIndexCallBacks = new ContentManager.ContentCallback() {
+        WebView webView;
+        @Override
+        public void onInit(ContentViewsEnum key, ViewGroup view) {
+            WebView webView = view.findViewById(R.id.layout_index_webview);
+            WebViewSetup.initializeWebView(webView);
+        }
+
+        @Override
+        public void onShow(ContentViewsEnum key, ViewGroup view) {
+            if(webView!=null){
+                String url = DataManager.getInstance().getHomeUrl();
+                log.i("Home Load Page: " + url);
+                webView.loadUrl(url);
+                log.ii_toast(getBaseContext(),"Home : onShow "+url);
+            }else{
+                webView  = view.findViewById(R.id.layout_index_webview);
+                log.e(" Error: Can't find WebView. Try to find again");
+            }
+        }
+
+        @Override
+        public void onHide(ContentViewsEnum key, ViewGroup view) {
+
+        }
+    };
+        // endregion
+
+        // region ContextThings
+    private ContentManager.ContentCallback mContextCallBacks = new ContentManager.ContentCallback() {
+        WebView webView;
+        @Override
+        public void onInit(ContentViewsEnum key, ViewGroup view) {
+            webView = view.findViewById(R.id.layout_context_webview);
+            WebViewSetup.initializeWebView(webView);
+        }
+
+        @Override
+        public void onShow(ContentViewsEnum key, ViewGroup view) {
+            if(webView!=null){
+                String url = DataManager.getInstance().getContextUrl();
+                log.i("Context Load Page: " + url);
+                webView.loadUrl(url);
+            }else
+                log.e(" Error: Can't find WebView. ");
+        }
+
+        @Override
+        public void onHide(ContentViewsEnum key, ViewGroup view) {
+
+        }
+    };
+        // endregion
+
+        // region ToyBoxThings
+    private ContentManager.ContentCallback mToyBoxCallBacks = new ContentManager.ContentCallback() {
+        @Override
+        public void onInit(ContentViewsEnum key, ViewGroup view) {
+
+        }
+
+        @Override
+        public void onShow(ContentViewsEnum key, ViewGroup view) {
+
+        }
+
+        @Override
+        public void onHide(ContentViewsEnum key, ViewGroup view) {
+
+        }
+    };
+        // endregion
+    //endregion
 }
