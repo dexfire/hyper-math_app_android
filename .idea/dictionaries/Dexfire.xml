@@ -4,6 +4,8 @@
       <w>addr</w>
       <w>addrtext</w>
       <w>bilipink</w>
+      <w>bottombar</w>
+      <w>dexfire</w>
       <w>edittext</w>
       <w>github</w>
       <w>gotoo</w>
@@ -11,6 +13,7 @@
       <w>mathwiki</w>
       <w>okhttp</w>
       <w>textview</w>
+      <w>titlebar</w>
       <w>toybox</w>
       <w>viewgroup</w>
       <w>webview</w>
