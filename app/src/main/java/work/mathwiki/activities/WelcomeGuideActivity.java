@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import work.mathwiki.R;
+import work.mathwiki.utility.ConstFieleds;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -108,6 +109,7 @@ public class WelcomeGuideActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        getSharedPreferences("work.mathwiki",MODE_PRIVATE).edit().putBoolean(ConstFieleds.Preference_Showed_Welcome_Page,true).apply();
     }
 
     @Override
