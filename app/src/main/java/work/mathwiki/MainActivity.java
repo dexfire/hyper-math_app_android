@@ -1,5 +1,6 @@
 package work.mathwiki;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,17 +17,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+
+import java.io.File;
 
 import work.mathwiki.activities.SettingsActivity;
 import work.mathwiki.activities.WelcomeGuideActivity;
 import work.mathwiki.core.content.ContentManager;
 import work.mathwiki.core.content.ContentViewsEnum;
+import work.mathwiki.core.content.LocalFileContentProvider;
 import work.mathwiki.core.data.DataManager;
 import work.mathwiki.core.logger.Logger;
-import work.mathwiki.fragments.BrowserFragment;
+import work.mathwiki.core.network.LocalWebViewClient;
 import work.mathwiki.updater.AppUpdateManager;
 import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.PermissionUtility;
@@ -47,9 +53,11 @@ import work.mathwiki.utility.WebViewSetup;
  *  3、先搭框架，后期优化+美化
  */
 
-
+@SuppressLint("SetTextI18n")
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    public static final String Package_Name = "work.mathwiki";
+    public static final String PRODUCT_NAME = "Hyper-Math";
     public static final String APP_TAG = "Hyper-Math";
 
     private FrameLayout mContainer;
@@ -80,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 布局 Views
         // 默认显示主页
         log.dd("Main Activity starting");
-        ContentManager.addView(ContentViewsEnum.home,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_index,null),mIndexCallBacks);
+        ContentManager.addView(ContentViewsEnum.home,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_home,null),mIndexCallBacks);
         ContentManager.addView(ContentViewsEnum.context,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mContextCallBacks);
         ContentManager.addView(ContentViewsEnum.toys,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mToyBoxCallBacks);
         setContentView(R.layout.activity_main);
@@ -138,8 +146,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else if(getSupportFragmentManager().getBackStackEntryCount()>0){
             getSupportFragmentManager().popBackStack();
-        } else if( currentFragment instanceof  BrowserFragment && ((BrowserFragment)getFragment(BrowserFragment.TAG)).canGoBack()){
-            ((BrowserFragment)getFragment(BrowserFragment.TAG)).goBack();
+        }else if(ContentManager.getCurrentCallback()!=null){
+            ContentManager.getCurrentCallback().onBackPressed();
         }else{
             if(System.currentTimeMillis() - last_back_press < 900 ){
                 MainActivity.this.finish();
@@ -246,42 +254,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             };
 
     // region Content Callbacks
-        // region IndexThings
+    /***
+     *      主页
+     */
     private ContentManager.ContentCallback mIndexCallBacks = new ContentManager.ContentCallback() {
-        WebView webView;
+        private WebView webView;
+        private EditText addr_text;
+
+        private View.OnClickListener onClickListener = v -> {
+            webView.loadUrl(addr_text.getText().toString());
+        };
+
         @Override
         public void onInit(ContentViewsEnum key, ViewGroup view) {
-            WebView webView = view.findViewById(R.id.layout_index_webview);
+            webView = view.findViewById(R.id.layout_index_webview);
             WebViewSetup.initializeWebView(webView);
+            webView.setWebViewClient(new LocalWebViewClient());
+            addr_text = view.findViewById(R.id.home_addr);
+            addr_text.setText(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
+            view.findViewById(R.id.fragment_browser_btn_goto).setOnClickListener(onClickListener);
         }
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
-            if(webView!=null){
-                String url = DataManager.getInstance().getHomeUrl();
-                log.i("Home Load Page: " + url);
-                webView.loadUrl(url);
-                log.ii_toast(getBaseContext(),"Home : onShow "+url);
-            }else{
-                webView  = view.findViewById(R.id.layout_index_webview);
-                log.e(" Error: Can't find WebView. Try to find again");
-            }
+            log.ii("showing homepage...");
+            webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
         }
 
         @Override
         public void onHide(ContentViewsEnum key, ViewGroup view) {
 
         }
-    };
-        // endregion
 
-        // region ContextThings
+        @Override
+        public void onBackPressed() {
+            if(webView.canGoBack()){
+                webView.goBack();
+            }
+        }
+    };
+    /***
+     *      目录页
+     *
+     */
     private ContentManager.ContentCallback mContextCallBacks = new ContentManager.ContentCallback() {
         WebView webView;
+        LocalWebViewClient client;
+        private View.OnClickListener onClickListener = v -> {
+
+        };
         @Override
         public void onInit(ContentViewsEnum key, ViewGroup view) {
             webView = view.findViewById(R.id.layout_context_webview);
+
             WebViewSetup.initializeWebView(webView);
+            client = new LocalWebViewClient();
+            webView.setWebViewClient(client);
         }
 
         @Override
@@ -298,10 +326,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void onHide(ContentViewsEnum key, ViewGroup view) {
 
         }
-    };
-        // endregion
 
-        // region ToyBoxThings
+        @Override
+        public void onBackPressed() {
+
+        }
+    };
+
     private ContentManager.ContentCallback mToyBoxCallBacks = new ContentManager.ContentCallback() {
         @Override
         public void onInit(ContentViewsEnum key, ViewGroup view) {
@@ -317,7 +348,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void onHide(ContentViewsEnum key, ViewGroup view) {
 
         }
+
+        @Override
+        public void onBackPressed() {
+
+        }
     };
-        // endregion
     //endregion
 }
