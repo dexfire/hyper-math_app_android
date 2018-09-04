@@ -24,12 +24,17 @@ public class ContentManager {
         void onInit(ContentViewsEnum key, ViewGroup view);
         void onShow(ContentViewsEnum key, ViewGroup view);
         void onHide(ContentViewsEnum key, ViewGroup view);
+        void onBackPressed();
     }
 
     private static ContentViewsEnum mCurrent;
 
     private static HashMap<ContentViewsEnum,ViewGroup> mViewGroups = new HashMap<>(3);
     private static HashMap<ContentViewsEnum,ContentCallback> mCallbacks = new HashMap<>(3);
+
+    public static ContentCallback getCurrentCallback(){
+        return mCallbacks.get(mCurrent);
+    }
 
     public static void showContent(ContentViewsEnum key, ViewGroup container){
         if(mViewGroups.containsKey(key) || container!=null || mViewGroups.get(key)!=null){
