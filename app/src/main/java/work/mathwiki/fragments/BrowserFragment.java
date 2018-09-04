@@ -37,14 +37,14 @@ public class BrowserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Activity activity =  getActivity();
         //if(activity!=null) activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        return inflater.inflate(R.layout.layout_index,container,false);
+        return inflater.inflate(R.layout.layout_home,container,false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mWebView = view.findViewById(R.id.webview);
-        mAdressText = view.findViewById(R.id.fragment_browser_edittext_addr);
+        mAdressText = view.findViewById(R.id.home_addr);
         mButtonGoto = view.findViewById(R.id.fragment_browser_btn_goto);
         mAdressText.setText("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/home.html");
         mButtonGoto.setOnClickListener(v ->{
