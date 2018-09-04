@@ -39,6 +39,9 @@
             android:name=".activities.CollectionsActivity"
             android:label="@string/title_activity_collectings"
             android:theme="@style/AppTheme" />
+        <provider
+            android:authorities="work.mathwiki.data"
+            android:name=".core.content.LocalFileContentProvider"/>
     </application>
 
 </manifest>
