@@ -10,6 +10,7 @@
 
     <FrameLayout
         android:id="@+id/activity_main_container"
+        android:background="?android:attr/windowBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
