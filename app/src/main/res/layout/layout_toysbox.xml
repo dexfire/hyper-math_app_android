@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" 
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
+    android:layout_height="match_parent"
+    tools:ignore="Suspicious0dp">
+    <LinearLayout
+        android:id="@+id/layout_toysbox_container"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/layout_toysbox_container"
-            android:orientation="vertical"
+            android:id="@+id/layout_toysbox_line1"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="@dimen/default_grid_item_height">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_grid_"></LinearLayout>
+                android:id="@+id/layout_toysbox_line1_row1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/default_grid_item_height">
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
-        <GridLayout
-            android:layout_width=""
-            android:layout_height=""></GridLayout>
-    </ScrollView>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

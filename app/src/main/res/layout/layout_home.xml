@@ -16,11 +16,13 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/fragment_browser_edittext_addr"
+            android:id="@+id/home_addr"
+            android:inputType="textUri"
             style="@android:style/Widget.Material.EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
+            android:lines="1"
             android:ems="10" />
 
         <TextView
@@ -29,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="@string/gotoo"
-            app:layout_constraintStart_toEndOf="@id/fragment_browser_edittext_addr" />
+            app:layout_constraintStart_toEndOf="@id/home_addr" />
     </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
