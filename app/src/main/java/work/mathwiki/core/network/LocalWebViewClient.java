@@ -13,80 +13,46 @@ import android.webkit.WebViewClient;
 
 import java.io.File;
 
+import work.mathwiki.core.data.DataManager;
+
 
 /**
  * Created by Dexfire on 2018/8/10 0010.
  */
 
 public class LocalWebViewClient extends WebViewClient {
-
+    private static final String File_Scheme = "file://";
     private static final String TAG = "LocalWebViewClient";
     private static final String baseLocalUrl = "file://"+Environment.getExternalStorageDirectory() + "/MathWiki/";
     private static final String basePath = Environment.getExternalStorageDirectory() + "/MathWiki/";
 
+
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        return false;
+    }
+
+
+
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        Uri url = request.getUrl();
-        // @Debug mode
-        android.util.Log.i(TAG,"overloadedOriginURL: "+url.toString());
-        android.util.Log.i(TAG,"url.getScheme: : "+url.getScheme());
-        android.util.Log.i(TAG,"url.getPathSegments: "+url.getPathSegments());
-        if(url.getScheme().equals("file") && !url.toString().startsWith(baseLocalUrl)){
-            view.loadUrl(baseLocalUrl +url.getPath());
-        } else if(!url.getPath().endsWith(".html")){
-            if(url.getPath().endsWith("/"))
-                view.loadUrl(baseLocalUrl +url.toString()+"/home.html");
-            else
-                view.loadUrl(baseLocalUrl +url.toString()+"home.html");
-        }
+//        Uri url = request.getUrl();
+//        // @Debug mode
+//        android.util.Log.i(TAG,"overloadedOriginURL: "+url.toString());
+//        android.util.Log.i(TAG,"url.getScheme: : "+url.getScheme());
+//        android.util.Log.i(TAG,"url.getPathSegments: "+url.getPathSegments());
+//        if(url.getScheme().equals("file") && !url.toString().startsWith(baseLocalUrl)){
+//            view.loadUrl(baseLocalUrl +url.getPath());
+//        } else if(!url.getPath().endsWith(".html")){
+//            if(url.getPath().endsWith("/"))
+//                view.loadUrl(baseLocalUrl +url.toString()+"/home.html");
+//            else
+//                view.loadUrl(baseLocalUrl +url.toString()+"home.html");
+//        }
 
-        return true;
+        return false;
         //return super.shouldOverrideUrlLoading(view, request);
-    }
-
-    @Override
-    public void onLoadResource(WebView view, String url) {
-        super.onLoadResource(view, url);
-    }
-
-    @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        super.onPageStarted(view, url, favicon);
-    }
-
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-    }
-
-    @Override
-    public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        return super.shouldInterceptRequest(view, request);
-    }
-
-    @Override
-    public void onFormResubmission(WebView view, Message dontResend, Message resend) {
-        super.onFormResubmission(view, dontResend, resend);
-    }
-
-    @Override
-    public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
-        super.doUpdateVisitedHistory(view, url, isReload);
-    }
-
-    @Override
-    public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
-        return super.shouldOverrideKeyEvent(view, event);
-    }
-
-    @Override
-    public void onScaleChanged(WebView view, float oldScale, float newScale) {
-        super.onScaleChanged(view, oldScale, newScale);
-    }
-
-    @Override
-    public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
-        return super.onRenderProcessGone(view, detail);
     }
 
     /***
