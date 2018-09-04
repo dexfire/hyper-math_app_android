@@ -32,23 +32,31 @@ public class DataManager {
         return true;
     }
 
-    public String getHomeUrl(){
-        if(checkDAtaOkay()){
-            return File_Scheme + Data_Storage_Path + File.separator + "index.html";
-        }else{
-            return File_Scheme + Data_Storage_Path+ File.separator + "404.html";
-        }
+    public static String getHomePath(){
+        return Data_Storage_Path + File.separator + "index.html";
+    }
+
+    public static String getHomeUrl(){
+        return File_Scheme + Data_Storage_Path + File.separator + "index.html";
     }
 
     public String getContextUrl(){
-        if(checkDAtaOkay()){
-            return File_Scheme + Data_Storage_Path+ File.separator + "context.html";
-        }else{
-            return File_Scheme + Data_Storage_Path+ File.separator + "404.html";
-        }
+        return File_Scheme + Data_Storage_Path+ File.separator + "context.html";
     }
 
-    public String getDataPath(){
+    public static String get404Path(){
+        return Data_Storage_Path+File.separator +"404.html";
+    }
+
+    public static String getBaseUrl(){
+        return File_Scheme + Data_Storage_Path;
+    }
+
+    public static String getDataPath(){
+        return Data_Storage_Path;
+    }
+
+    public static String getBasePath(){
         return Data_Storage_Path;
     }
 }
