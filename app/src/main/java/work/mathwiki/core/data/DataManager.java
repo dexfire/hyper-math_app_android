@@ -37,6 +37,7 @@ public class DataManager {
     }
 
     public static String getHomeUrl(){
+
         return File_Scheme + Data_Storage_Path + File.separator + "index.html";
     }
 
