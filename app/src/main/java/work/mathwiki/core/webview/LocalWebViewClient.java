@@ -1,4 +1,4 @@
-package work.mathwiki.core.network;
+package work.mathwiki.core.webview;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
