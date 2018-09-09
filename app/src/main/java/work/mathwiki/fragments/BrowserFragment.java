@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import work.mathwiki.R;
-import work.mathwiki.core.network.LocalWebViewClient;
+import work.mathwiki.core.webview.LocalWebViewClient;
 
 /***
  *  A Fragment shows a Browser to the User

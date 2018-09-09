@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="@dimen/width_1in4_with_margin_size"
+    android:layout_height="100dp">
+
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/default_medium_icon_size"
-        android:layout_height="@dimen/default_medium_icon_size" />
-    
+        android:layout_width="@dimen/default_large_icon_size"
+        android:layout_height="@dimen/default_large_icon_size"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_margin" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_margin_mini"
+        android:textColor="@color/text_black_light" />
 
 </RelativeLayout>

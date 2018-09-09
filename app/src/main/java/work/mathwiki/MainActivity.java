@@ -32,7 +32,7 @@ import work.mathwiki.core.content.ContentViewsEnum;
 import work.mathwiki.core.content.LocalFileContentProvider;
 import work.mathwiki.core.data.DataManager;
 import work.mathwiki.core.logger.Logger;
-import work.mathwiki.core.network.LocalWebViewClient;
+import work.mathwiki.core.webview.LocalWebViewClient;
 import work.mathwiki.updater.AppUpdateManager;
 import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.PermissionUtility;
@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // ActionBar 初始化
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         //toolbar.setLogo(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
 
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        getSupportFragmentManager().executePendingTransactions();
 //        showFragment(BrowserFragment.TAG);
 
+//        View statusBar = findViewById(android.R.id.statusBarBackground);
+//        statusBar.setBackgroundColor(getResources().getColor(R.color.colorAccent));
     }
 
     @Override
@@ -235,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     // endregion
 
+    // 底部导航键 选择事件
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -272,13 +276,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             webView.setWebViewClient(new LocalWebViewClient());
             addr_text = view.findViewById(R.id.home_addr);
             addr_text.setText(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
+            webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
             view.findViewById(R.id.fragment_browser_btn_goto).setOnClickListener(onClickListener);
         }
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
-            log.ii("showing homepage...");
-            webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
+            // 再次点击，回主页
+            if(ContentManager.getCurrent() == ContentViewsEnum.home){
+                log.ii("showing homepage...");
+                webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
+            }
+
         }
 
         @Override
@@ -332,6 +341,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
     };
+
+    /***
+     *    Toybox
+     */
 
     private ContentManager.ContentCallback mToyBoxCallBacks = new ContentManager.ContentCallback() {
         @Override

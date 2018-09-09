@@ -11,28 +11,39 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/home_addr"
-            android:inputType="textUri"
             style="@android:style/Widget.Material.EditText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/default_medium_icon_size"
+            android:layout_toLeftOf="@id/fragment_browser_btn_goto"
+            android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/default_margin"
-            android:lines="1"
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="textUri"
+            android:lines="1" />
 
         <TextView
             android:id="@+id/fragment_browser_btn_goto"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_height="@dimen/default_medium_icon_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:gravity="center"
             android:text="@string/gotoo"
-            app:layout_constraintStart_toEndOf="@id/home_addr" />
-    </LinearLayout>
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
 

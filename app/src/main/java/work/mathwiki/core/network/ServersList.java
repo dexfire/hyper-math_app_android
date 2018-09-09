@@ -16,5 +16,6 @@ public class ServersList {
         sServersList = new ArrayList<>();
         sServersList.add(new Server("https://github.com","/dexfire/MathWiki/releases"));
         sServersList.add(new Server("http://mathwiki.work","/"));
+        sServersList.add(new Server("http://dexfire.320.io", "/"));
     }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MarkdownEditorActivity">
+
+    <EditText
+        android:id="@+id/mdEditor"
+        android:gravity="start"
+        android:text="Markdown is a popular quick-edit language."
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editor_toolbar_appbarlayout"/>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/editor_toolbar_appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editor_toolbar_container_height"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editor_toolbar_container_height">
+            <LinearLayout
+                android:id="@+id/mdEditor_input_toolbar_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editor_toolbar_container_height"
+                android:orientation="vertical" />
+        </ScrollView>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -21,3 +21,7 @@ Around app side, We use a WebView to show the content already downloaded for off
 ## Progress
 
 It's under-develop now.
+[x] Local html book viewer.
+[ ] Online update from github or private server.
+[ ] Theme manager which dynmically changes the app & web style.
+[ ] Katex formula 

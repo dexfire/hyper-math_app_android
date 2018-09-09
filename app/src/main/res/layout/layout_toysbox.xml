@@ -10,21 +10,50 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/layout_toysbox_line1"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_grid_item_height">
-            <LinearLayout
-                android:id="@+id/layout_toysbox_line1_row1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/default_grid_item_height">
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            android:layout_height="100dp">
+
+            <include layout="@layout/item_simeple__icon_with_bottom_title"
+                android:id="@+id/line1_item1"/>
+
+            <include
+                android:id="@+id/line1_item2"
+                layout="@layout/item_simeple__icon_with_bottom_title" />
+
+            <include layout="@layout/item_simeple__icon_with_bottom_title"
+                android:id="@+id/line1_item3"/>
+
+            <include layout="@layout/item_simeple__icon_with_bottom_title"
+                android:id="@+id/line1_item4"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_toysbox_line2"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/line1_item1"
+                layout="@layout/item_simeple__icon_with_bottom_title" />
+
+            <include
+                android:id="@+id/line1_item2"
+                layout="@layout/item_simeple__icon_with_bottom_title" />
+
+            <include
+                android:id="@+id/line1_item3"
+                layout="@layout/item_simeple__icon_with_bottom_title" />
+
+            <include
+                android:id="@+id/line1_item4"
+                layout="@layout/item_simeple__icon_with_bottom_title" />
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -39,9 +39,12 @@
             android:name=".activities.CollectionsActivity"
             android:label="@string/title_activity_collectings"
             android:theme="@style/AppTheme" />
+
         <provider
-            android:authorities="work.mathwiki.data"
-            android:name=".core.content.LocalFileContentProvider"/>
+            android:name=".core.content.LocalFileContentProvider"
+            android:authorities="work.mathwiki.data" />
+
+        <activity android:name=".activities.MarkdownEditorActivity"></activity>
     </application>
 
 </manifest>

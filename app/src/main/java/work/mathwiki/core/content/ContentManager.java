@@ -39,8 +39,12 @@ public class ContentManager {
     public static void showContent(ContentViewsEnum key, ViewGroup container){
         if(mViewGroups.containsKey(key) || container!=null || mViewGroups.get(key)!=null){
             log.ii("显示ViewGroup : "+ key.name());
-            container.removeAllViews();
-            container.addView(getView(key),-1,-1);
+            if (container != null) {
+                container.removeAllViews();
+                container.addView(getView(key),-1,-1);
+            }else{
+                log.e("The ContainerView is null! This is abnormal.");
+            }
             // 旧 View 的 onHide 事件
             if(mCallbacks.get(mCurrent)!=null){
                 mCallbacks.get(mCurrent).onHide(key,getView(mCurrent));
@@ -55,6 +59,10 @@ public class ContentManager {
 
     public static ViewGroup getCurrentView(){
         return getView(mCurrent);
+    }
+
+    public static ContentViewsEnum getCurrent(){
+        return mCurrent;
     }
 
     public static void addView(ContentViewsEnum key, ViewGroup vg){
