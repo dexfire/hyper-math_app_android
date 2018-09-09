@@ -22,7 +22,23 @@ Around app side, We use a WebView to show the content already downloaded for off
 
 It's under-develop now.
 
+### Core
+
 - [x] Local html book viewer.
-- [ ] Online update from github or private server.
+- [ ] Update online from github or private server.
+- [ ] Collect reading times, online comment.
+- [ ] Some tips about Math.
+- [ ] Graphics math demos.
+- [ ] Customize Settings.
+- [ ] Popup tips box!
+
+### UI
+
+- [x] Bootstrap style.
+- [ ] Context float box.
 - [ ] Theme manager which dynmically changes the app & web style.
-- [ ] Katex formula
+
+### Extra
+
+- [ ] Markdown note editor.
+- [ ] Katex formula support.

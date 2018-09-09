@@ -10,6 +10,11 @@ import android.text.SpannedString;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.util.List;
+import java.util.Map;
+
 /**
  *  日志辅助类
  * ==============================
@@ -106,5 +111,45 @@ public class Logger {
             }
             Toast.makeText(context, spanned, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void ii_http_conn(HttpURLConnection conn){
+       ii(toString(conn));
+    }
+
+    public void ii_toast_http_conn(Context context,HttpURLConnection conn){
+       ii_toast(context,toString(conn));
+    }
+
+    /***
+     *  用于打印或者展示HttpConnection 的相关信息。
+     * @param conn 用于打印的Http连接信息。
+     * @return 人类可读的请求信息。
+     */
+    private static String toString(HttpURLConnection conn){
+        StringBuilder sb = new StringBuilder(LeftEqs+"HttpConnection Details"+RightEqs);
+        sb.append("\n== Request ==\n");
+        Map<String,List<String>> map = conn.getHeaderFields();
+        for (String key : map.keySet()){
+            StringBuilder content = new StringBuilder("[");
+            List<String> list = map.get(key);
+            for (String obj: list){
+                content.append(obj).append(",");
+            }
+            content.append("]");
+            sb.append(key).append(":").append(content).append("\n");
+        }
+
+        try {
+            sb.append("\n== Response\n")
+                    .append("\nResponseCode: ").append(conn.getResponseCode())
+                    .append("\nResponseMessage: ").append(conn.getResponseMessage())
+                    .append("\nContent-Lenth: ").append(conn.getContentLength())
+                    .append("\nContent-Type: ").append(conn.getContentType())
+                    .append("\nContent-Encording: ").append(conn.getContentEncoding());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 }

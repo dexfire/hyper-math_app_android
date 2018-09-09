@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -32,6 +33,7 @@ import work.mathwiki.core.content.ContentViewsEnum;
 import work.mathwiki.core.content.LocalFileContentProvider;
 import work.mathwiki.core.data.DataManager;
 import work.mathwiki.core.logger.Logger;
+import work.mathwiki.core.network.IDownloadManager;
 import work.mathwiki.core.webview.LocalWebViewClient;
 import work.mathwiki.updater.AppUpdateManager;
 import work.mathwiki.utility.ConstFieleds;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private long last_back_press = 0;
     private int mScreenWidth,mScreenHeight;
     private Logger log;
+    private static Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 开启调试信息
         Logger.setDebug(true);
         log = Logger.build("MainActivity");
-
+        handler = new Handler();
         // TODO : 启动浮窗、非全屏、意蕴&装逼向
 
         // 判断、启动介绍页
@@ -158,6 +161,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 last_back_press = System.currentTimeMillis();
             }
         }
+    }
+
+    public static Handler getHandler(){
+        return handler;
     }
 
     @Override
@@ -354,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
-
+            IDownloadManager.downloadOverHttps(MainActivity.this);
         }
 
         @Override
