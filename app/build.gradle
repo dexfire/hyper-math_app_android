@@ -44,6 +44,8 @@ dependencies {
     }
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.1.2'
+    implementation 'com.jakewharton:butterknife:(insert latest version)'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:(insert latest version)'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
