@@ -29,7 +29,7 @@ public class Logger {
     private static final String RightEqs = "  ========";
 
     private String mModuleName;
-    private static boolean DEBUG = false;
+    public static boolean DEBUG = false;
     private Logger(String moduleName){
         moduleName = moduleName;
     }
@@ -126,7 +126,7 @@ public class Logger {
      * @param conn 用于打印的Http连接信息。
      * @return 人类可读的请求信息。
      */
-    private static String toString(HttpURLConnection conn){
+    public static String toString(HttpURLConnection conn){
         StringBuilder sb = new StringBuilder(LeftEqs+"HttpConnection Details"+RightEqs);
         sb.append("\n== Request ==\n");
         Map<String,List<String>> map = conn.getHeaderFields();

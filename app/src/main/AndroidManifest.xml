@@ -31,7 +31,7 @@
             android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".activities.WelcomeGuideActivity"
+            android:name=".activities.GuideSplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_welcome_guide"
             android:theme="@style/FullscreenTheme" />
@@ -44,7 +44,8 @@
             android:name=".core.content.LocalFileContentProvider"
             android:authorities="work.mathwiki.data" />
 
-        <activity android:name=".activities.MarkdownEditorActivity"></activity>
+        <activity android:name=".activities.MarkdownEditorActivity" />
+        <activity android:name=".activities.ShareAppActivity"></activity>
     </application>
 
 </manifest>

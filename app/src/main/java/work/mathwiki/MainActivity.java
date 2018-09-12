@@ -27,7 +27,8 @@ import android.widget.FrameLayout;
 import java.io.File;
 
 import work.mathwiki.activities.SettingsActivity;
-import work.mathwiki.activities.WelcomeGuideActivity;
+import work.mathwiki.activities.GuideSplashActivity;
+import work.mathwiki.activities.ShareAppActivity;
 import work.mathwiki.core.content.ContentManager;
 import work.mathwiki.core.content.ContentViewsEnum;
 import work.mathwiki.core.content.LocalFileContentProvider;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boolean firstStarted =  preferences.getBoolean(ConstFieleds.Preference_Showed_Welcome_Page,false);
         if(!firstStarted) {
             log.ii("Starting UserGuideSplashActivity");
-            startActivity(new Intent(this, WelcomeGuideActivity.class));
+            startActivity(new Intent(this, GuideSplashActivity.class));
         }
 
         // 布局 Views
@@ -209,12 +210,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.nav_share:
+                startActivity(new Intent(MainActivity.this, ShareAppActivity.class));
                 break;
             case R.id.nav_exit:
                 System.exit(0);
                 break;
         }
-
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -290,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
             // 再次点击，回主页
+            getSupportActionBar().setCustomView(new EditText(MainActivity.this));
             if(ContentManager.getCurrent() == ContentViewsEnum.home){
                 log.ii("showing homepage...");
                 webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
@@ -330,6 +332,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
+            getSupportActionBar().setCustomView(new EditText(MainActivity.this));
             if(webView!=null){
                 String url = DataManager.getInstance().getContextUrl();
                 log.i("Context Load Page: " + url);

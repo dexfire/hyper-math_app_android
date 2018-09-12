@@ -55,9 +55,8 @@
     </string-array>
 
 
-    <string name="title_activity_welcome_guide">WelcomeGuideActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_welcome_guide">改变你的学习 ！</string>
+
 
     <!-- 设置 -->
     <string name="settings_category_general">通用设置</string>
@@ -66,7 +65,7 @@
 
     <!-- 关于 -->
     <string name="settings_about_version">Version: %s</string>
-    <string name="settings_about_version_desc">检查更新...</string>
+    <string name="settings_about_version_desc">检查更新…</string>
 
     <string name="settings_category_notification">通知</string>
     <string name="settings_notification_messages">允许消息推送</string>

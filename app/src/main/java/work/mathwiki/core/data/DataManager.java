@@ -5,6 +5,8 @@ import android.os.Environment;
 import java.io.File;
 import java.util.List;
 
+import work.mathwiki.core.content.ContentManager;
+import work.mathwiki.core.content.LocalFileContentProvider;
 import work.mathwiki.core.logger.Logger;
 
 public class DataManager {
@@ -42,7 +44,7 @@ public class DataManager {
     }
 
     public String getContextUrl(){
-        return File_Scheme + Data_Storage_Path+ File.separator + "context.html";
+        return LocalFileContentProvider.URI_PREFIX +File.separator + "context.html";
     }
 
     public static String get404Path(){

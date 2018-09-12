@@ -38,13 +38,13 @@ It's under-develop now.
 ### Core
 
 - [x] Local html book viewer.
-- [ ] View markdown source and contribute(Wiki-like).
-- [ ] Update local data from server.
-- [ ] Collect reading times, online comment.
-- [ ] Some tips about Math.
-- [ ] Graphics math demos.
-- [ ] Customize Settings.
+- [ ] Some sample page.
 - [ ] Popup tips box!
+- [ ] View *.md source & edit & contribute(Wiki-like).
+- [ ] Update data from server.
+- [ ] Graphics math demos.
+- [ ] Interactive flsh-like demo.
+- [ ] Customize Settings.
 
 ### Content
 
@@ -60,12 +60,14 @@ It's under-develop now.
 **Extra** References
 
 - [x] Greek alphaset table.
+- [ ] Tips about Math.
 
 ### UI
 
 - [x] Bootstrap style.
 - [ ] Context float box.
 - [ ] Theme manager which dynmically changes the app & web style.
+- [ ] Custom Loading view, Deepin installer or tieba-client-like ball water tank appearence.
 
 ### Extra
 
@@ -73,4 +75,5 @@ It's under-develop now.
 - [ ] Markdown: local preview.
 - [ ] Markdown: image upload.
 - [ ] Katex formula support.
+- [ ] Collect reading times, online comment.
 - [ ] Dashboard.

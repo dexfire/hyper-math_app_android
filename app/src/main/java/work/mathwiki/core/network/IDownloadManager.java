@@ -1,7 +1,11 @@
 package work.mathwiki.core.network;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Debug;
+import android.os.Environment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +23,8 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 import retrofit2.Retrofit;
 import work.mathwiki.MainActivity;
 import work.mathwiki.core.logger.Logger;
+import work.mathwiki.utility.ClipBoardUtility;
+import work.mathwiki.utility.NotificationUtility;
 
 
 public class IDownloadManager {
@@ -47,24 +53,50 @@ public class IDownloadManager {
             @Override
             public void run() {
                 int HttpResponse = 0;
+                String Content = "";
                 try {
                     URL url = new URL("https","api.github.com","/repos/dexfire/mathwiki/releases/latest");
                     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.connect();
-                    log.ii_toast_http_conn(context,connection);
+
+                    // Debug 信息
+                    if(Logger.DEBUG){
+                        String info = Logger.toString(connection);
+                        MainActivity.getHandler().post(() -> {
+                            log.ii_toast(context,info);
+                            ClipBoardUtility.copy2cb(context,"github api info",info);
+                        });
+                    }
+
                     HttpResponse = connection.getResponseCode();
                     if(HttpResponse==HttpsURLConnection.HTTP_OK){
                         int len = connection.getContentLength();
                         String encording = connection.getContentEncoding();
                         String contentType = connection.getContentType();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+                        StringBuilder sb = new StringBuilder();
+                        String line = reader.readLine();
+                        if (line!=null){
+                            sb.append(line).append("\n");
+                            line = reader.readLine();
+                        }
+                        Content  = sb.toString();
+                        if(Logger.DEBUG){
+                            String finalContent = Content;
+                            MainActivity.getHandler().post(() -> {
+                                NotificationUtility.makeLongToast(context, finalContent);
+                            });
+                            ClipBoardUtility.copy2cb(context,"github api result",Content);
+                            log.i(Content);
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
-        new Thread(runnable).run();
+        new Thread(runnable).start();
     }
 
     public static void downloadWithSystemDM(String link){

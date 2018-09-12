@@ -13,8 +13,9 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setActionBar(null);
         setContentView(R.layout.activity_settings);
-
+        
         Toolbar  toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -30,6 +30,7 @@ public class LocalFileContentProvider extends ContentProvider {
         String path = DataManager.getDataPath() + File.separator + uri.getPath();
         File target = new File(path);
         if(!target.exists()) path = DataManager.get404Path();
+        if
         Logger.si("LocalFileContentProvider: Loading file "+ path);
         return ParcelFileDescriptor.open(new File(path),ParcelFileDescriptor.MODE_READ_WRITE);
     }
@@ -71,4 +72,5 @@ public class LocalFileContentProvider extends ContentProvider {
         // NOTICE:  Not Supported Method !
         return 0;
     }
+
 }
