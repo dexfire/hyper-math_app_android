@@ -16,7 +16,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:layout_width="match_parent"
             android:layout_height="@dimen/default_toolbar_height"/>
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             style="@style/AppTheme.SettingCategoryText"
             android:id="@+id/settings_categoryText_general"
             android:layout_width="wrap_content"
@@ -28,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <RelativeLayout
-                android:id="@+id/settings_general_"
+                android:id="@+id/settings_general_allow_mobile_download"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_container_height">
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:text="@string/settings_general_allow_mobile_download"
                     style="@style/AppTheme.SettingItemText"
                     android:layout_width="wrap_content"
@@ -45,25 +45,51 @@
                 android:id="@+id/settings_general_autoUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_container_height">
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:text="@string/settings_general_allow_mobile_download"
                     style="@style/AppTheme.SettingItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
-            </RelativeLayout>>
+            </RelativeLayout>
             <View
                 android:background="?divider_line_color1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_line_height_normal" />
             <RelativeLayout
-                android:id="@+id/settings_general_autoUpdate"
+                android:id="@+id/settings_general_a"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_item_container_height">
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:text="@string/settings_general_allow_mobile_download"
                     style="@style/AppTheme.SettingItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <!--  其他设置
+                   ========================
+                   包括检查更新，调试，反馈，关于等
+
+            -->
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.SettingCategoryText"
+                android:id="@+id/settings_categoryText_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_category_others"/>
+
+            <!--  调试模式  -->
+            <RelativeLayout
+                android:id="@+id/settings_others_debug"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_container_height">
+                <android.support.v7.widget.AppCompatTextView
+                    android:text="@string/settings_general_allow_mobile_download"
+                    style="@style/AppTheme.SettingItemText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>>
         </LinearLayout>
     </LinearLayout>
