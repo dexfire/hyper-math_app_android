@@ -1,10 +1,13 @@
 package work.mathwiki;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,10 +38,12 @@ import work.mathwiki.core.content.ContentViewsEnum;
 import work.mathwiki.core.content.LocalFileContentProvider;
 import work.mathwiki.core.data.DataManager;
 import work.mathwiki.core.logger.Logger;
+import work.mathwiki.core.network.AppUpdateInfo;
 import work.mathwiki.core.network.IDownloadManager;
 import work.mathwiki.core.webview.LocalWebViewClient;
 import work.mathwiki.updater.AppUpdateManager;
 import work.mathwiki.utility.ConstFieleds;
+import work.mathwiki.utility.NotificationUtility;
 import work.mathwiki.utility.PermissionUtility;
 import work.mathwiki.utility.WebViewSetup;
 
@@ -94,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         log.dd("Main Activity starting");
         ContentManager.addView(ContentViewsEnum.home,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_home,null),mIndexCallBacks);
         ContentManager.addView(ContentViewsEnum.context,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mContextCallBacks);
-        ContentManager.addView(ContentViewsEnum.toys,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_context,null),mToyBoxCallBacks);
+        ContentManager.addView(ContentViewsEnum.toys,(ViewGroup) getLayoutInflater().inflate(R.layout.layout_toysbox,null),mToyBoxCallBacks);
         setContentView(R.layout.activity_main);
         mContainer = findViewById(R.id.activity_main_container);
         ContentManager.showContent(ContentViewsEnum.home,mContainer);
@@ -133,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //TODO : check permission of storage usage
         PermissionUtility.checkAllNeededPermissions(this);
         //TODO : check update
-        AppUpdateManager.get();
+        AppUpdateManager.getInstance().checkUpdates(this);
 
 //        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //            transaction.add(R.id.main_container,new BrowserFragment(),BrowserFragment.TAG)
@@ -160,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 MainActivity.this.finish();
             }else{
                 last_back_press = System.currentTimeMillis();
+                NotificationUtility.makeShortToast(this,getResources().getString(R.string.press_again_to_exit));
             }
         }
     }
@@ -190,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // region 底部导航栏 点击事件
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle activity_main_navigation view item clicks here.
         int id = item.getItemId();
         switch(id){
@@ -207,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
             case R.id.nav_goto:
-
+                NotificationUtility.makeStatusBarNotification(this,"Hyper-Math 通知测试","这是通知内容","这个我也不知道是个什么鬼",R.drawable.ic_info);
                 break;
             case R.id.nav_share:
                 startActivity(new Intent(MainActivity.this, ShareAppActivity.class));
@@ -291,7 +298,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
             // 再次点击，回主页
-            getSupportActionBar().setCustomView(new EditText(MainActivity.this));
+            ActionBar actionBar =   getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setCustomView(new EditText(MainActivity.this));
+            }else{
+                log.e("ERROR: getSupportActionBar() returns null!");
+            }
             if(ContentManager.getCurrent() == ContentViewsEnum.home){
                 log.ii("showing homepage...");
                 webView.loadUrl(LocalFileContentProvider.URI_PREFIX + File.separator + "index.html");
@@ -305,9 +317,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         @Override
-        public void onBackPressed() {
+        public boolean onBackPressed() {
             if(webView.canGoBack()){
                 webView.goBack();
+                return true;
+            }else{
+                return false;
             }
         }
     };
@@ -332,13 +347,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
-            getSupportActionBar().setCustomView(new EditText(MainActivity.this));
+            ActionBar actionBar =   getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setCustomView(new EditText(MainActivity.this));
+            }else{
+                log.e("ERROR: getSupportActionBar() returns null!");
+            }
+
             if(webView!=null){
                 String url = DataManager.getInstance().getContextUrl();
                 log.i("Context Load Page: " + url);
                 webView.loadUrl(url);
             }else
-                log.e(" Error: Can't find WebView. ");
+                log.e(" ERROR: Can't find WebView. ");
         }
 
         @Override
@@ -347,8 +368,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         @Override
-        public void onBackPressed() {
-
+        public boolean onBackPressed() {
+            if(webView.canGoBack()){
+                webView.goBack();
+                return true;
+            }else{
+                return false;
+            }
         }
     };
 
@@ -364,7 +390,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public void onShow(ContentViewsEnum key, ViewGroup view) {
-            IDownloadManager.downloadOverHttps(MainActivity.this);
+            //IDownloadManager.downloadOverHttps(MainActivity.this);
+            AppUpdateManager.getInstance().checkUpdates(MainActivity.this);
         }
 
         @Override
@@ -372,9 +399,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
+        /***
+         *  不拦截按键事件
+         * @return false
+         */
         @Override
-        public void onBackPressed() {
-
+        public boolean onBackPressed() {
+            return false;
         }
     };
     //endregion
