@@ -23,7 +23,9 @@
     <dimen name="settings_item_container_height">48dp</dimen>
 
     <dimen name="default_padding">3dp</dimen>
-    <dimen name="default_margin">10dp</dimen>
+    <dimen name="default_margin_large">16dp</dimen>
+    <dimen name="default_margin_big">12dp</dimen>
+    <dimen name="default_margin_normal">10dp</dimen>
     <dimen name="default_margin_medium">8dp</dimen>
     <dimen name="default_margin_mini">4dp</dimen>
     <dimen name="default_margin_ultra_mini">2dp</dimen>

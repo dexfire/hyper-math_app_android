@@ -6,6 +6,7 @@ package work.mathwiki.utility;
 
 public class ConstFieleds {
     public static final String Preference_Showed_Welcome_Page = "Preference_Showed_Welcome_Page";
-
+    public static  final String Index_Html = "index.html";
+    public static final String Context_Html = "context.html";
 
 }

@@ -1,9 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
+    <!-- AppTheme 全局默认主题 -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-
         <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
         <!--<item name="android:navigationBarColor">@color/theme_pink_color_alpha_AA</item>-->
         <!--<item name="android:colorForeground">@color/black_gray</item>-->
@@ -14,6 +12,12 @@
         <item name="divider_line_color1">@color/ex6_white_color</item>
         <item name="common_dock_bg">@color/gray_light</item>
         <item name="common_bg">@color/white</item>
+    </style>
+
+    <style name="AppTheme.AppCompatTextButton">
+        <item name="android:textColor">?colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/default_margin_medium</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -65,16 +69,16 @@
 
     </style>
 
-    <style name="AppTheme.SettingItemText" parent="AppTheme">
-        <item name="android:layout_margin">@dimen/default_margin</item>
+    <style name="AppTheme.SettingItemText" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:layout_margin">@dimen/default_margin_normal</item>
         <item name="android:background">@color/gray_background</item>
         <item name="android:textSize">16.0sp</item>
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="AppTheme.SettingCategoryText" parent="AppTheme">
-        <item name="android:layout_margin">@dimen/default_margin</item>
+    <style name="AppTheme.SettingCategoryText" parent="Base.TextAppearance.AppCompat.Small">
+        <item name="android:layout_margin">@dimen/default_margin_normal</item>
         <item name="android:textColor">@color/pink</item>
         <item name="android:background">@color/gray_background</item>
         <item name="android:textSize">12.0sp</item>

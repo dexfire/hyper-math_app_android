@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:isGame="false">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -42,10 +43,11 @@
 
         <provider
             android:name=".core.content.LocalFileContentProvider"
-            android:authorities="work.mathwiki.data" />
+            android:authorities="work.mathwiki.data"
+            android:exported="false" />
 
         <activity android:name=".activities.MarkdownEditorActivity" />
-        <activity android:name=".activities.ShareAppActivity"></activity>
+        <activity android:name=".activities.ShareAppActivity" />
     </application>
 
 </manifest>

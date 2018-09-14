@@ -6,7 +6,7 @@
     <color name="colorPrimary">@color/blue_theme</color>
     <color name="colorPrimaryDark">@color/blue_dark</color>
     <color name="bg_main">#ffeaeaea</color>
-    <color name="seprate_line_color_grey">@color/black_gray</color>
+    <color name="divider_line_color_dark">#ffc0c0c0</color>
     <color name="back_color_sel">#7fcccccc</color>
 
     <!-- General Colors -->

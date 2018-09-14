@@ -36,7 +36,7 @@
     <string name="plugin_main_data">主数据包</string>
 
     <string name="app_website">http://mathwiki.work</string>
-    <string name="click_again_to_exit">再次点击就退出了哦~</string>
+    <string name="press_again_to_exit">再次点击退出~</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -74,8 +74,12 @@
     <string name="settings_category_stylish">个性化</string>
 
     <string name="settings_category_others">其他..</string>
+
+    <string name="settings_others_debug">调试模式</string>
     <string name="settings_others_update">检查更新</string>
     <string name="settings_others_about">关于..</string>
     <string name="close">close</string>
-
+    <string name="dialog_update_button_ok">好，快更</string>
+    <string name="dialog_update_button_no">不更新</string>
+    <string name="dialog_update_button_no_more">忽略此版本</string>
 </resources>
