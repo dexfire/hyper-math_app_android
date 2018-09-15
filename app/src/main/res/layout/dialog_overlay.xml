@@ -12,7 +12,7 @@
         <ImageView
             android:id="@+id/dialog_topbar_icon"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin_normal"
             android:layout_width="@dimen/dialog_topbar_icon_size"
             android:layout_height="@dimen/dialog_topbar_icon_size" />
         <TextView
@@ -35,19 +35,19 @@
         <TextView
             android:id="@+id/dialog_button_right1"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/dialog_button_right2"
-            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin_normal"
             android:layout_toLeftOf="@id/dialog_button_right1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/dialog_button_left1"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin_normal"
+            android:layout_marginRight="@dimen/default_margin_normal"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

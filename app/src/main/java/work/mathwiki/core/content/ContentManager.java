@@ -24,7 +24,7 @@ public class ContentManager {
         void onInit(ContentViewsEnum key, ViewGroup view);
         void onShow(ContentViewsEnum key, ViewGroup view);
         void onHide(ContentViewsEnum key, ViewGroup view);
-        void onBackPressed();
+        boolean onBackPressed();
     }
 
     private static ContentViewsEnum mCurrent;

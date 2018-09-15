@@ -26,7 +26,7 @@ import java.util.List;
  *
  */
 
-public class Tabhost extends FrameLayout {
+public class Tabhost extends LinearLayout {
 
     private int mSelectedTabIndex = 0;
     private int mSelectedTabId = 0;
@@ -63,25 +63,22 @@ public class Tabhost extends FrameLayout {
         mTabsList = new ArrayList<>();
         LayoutInflater.from(context).inflate(R.layout.layout_tab_host_container,this,true);
         mTabsContainer = findViewById(R.id.tab_host_container);
-        mTabsClickedCallback = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int index = mTabsContainer.indexOfChild(v);
-                if(mSelectedTabIndex != index){     //发生状态切换
-                    setSelectedState(Tabhost.this.mSelectedTabIndex,false); //调用
-                    setSelectedState(index,true);
-                    Tabhost.this.mSelectedTabIndex = index;
-                    Tabhost.this.mSelectedTabId = v.getId();
-                    if(Tabhost.this.mTabsStateChangedCallback!=null){
-                        Tabhost.this.mTabsStateChangedCallback.onTabSelected(index,v);
-                    }
-                }else{      //仅仅是再次单击
-                    setSelectedState(index,true);
-                    Tabhost.this.mSelectedTabIndex = index;
-                    Tabhost.this.mSelectedTabId = v.getId();
-                    if(Tabhost.this.mTabsStateChangedCallback!=null){
-                        Tabhost.this.mTabsStateChangedCallback.onTabSelectedClickedAgain(index,v);
-                    }
+        mTabsClickedCallback = v -> {
+            int index = mTabsContainer.indexOfChild(v);
+            if(mSelectedTabIndex != index){     //发生状态切换
+                setSelectedState(Tabhost.this.mSelectedTabIndex,false); //调用
+                setSelectedState(index,true);
+                Tabhost.this.mSelectedTabIndex = index;
+                Tabhost.this.mSelectedTabId = v.getId();
+                if(Tabhost.this.mTabsStateChangedCallback!=null){
+                    Tabhost.this.mTabsStateChangedCallback.onTabSelected(index,v);
+                }
+            }else{      //仅仅是再次单击
+                setSelectedState(index,true);
+                Tabhost.this.mSelectedTabIndex = index;
+                Tabhost.this.mSelectedTabId = v.getId();
+                if(Tabhost.this.mTabsStateChangedCallback!=null){
+                    Tabhost.this.mTabsStateChangedCallback.onTabSelectedClickedAgain(index,v);
                 }
             }
         };

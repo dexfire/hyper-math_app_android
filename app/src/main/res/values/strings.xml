@@ -26,6 +26,7 @@
     <string name="downloading">下载</string>
     <string name="download">下载</string>
     <string name="update">更新</string>
+    <string name="update_already_latest">已经是最新本</string>
     <string name="gotoo">转到</string>
     <string name="notification_test">This is a test string!</string>
 

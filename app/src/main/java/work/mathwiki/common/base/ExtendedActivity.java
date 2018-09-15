@@ -90,4 +90,12 @@ public class ExtendedActivity extends AppCompatActivity {
     public WindowManager getWindowManager(){
         return mWindowManager;
     }
+
+    public void setScreenHeight(int mScreenHeight) {
+        this.mScreenHeight = mScreenHeight;
+    }
+
+    public void setScreenWidth(int mScreenWidth) {
+        this.mScreenWidth = mScreenWidth;
+    }
 }

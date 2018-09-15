@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import work.mathwiki.MainActivity;
 import work.mathwiki.core.data.DataManager;
 import work.mathwiki.core.logger.Logger;
+import work.mathwiki.utility.ConstFieleds;
 
 public class LocalFileContentProvider extends ContentProvider {
 
@@ -30,7 +31,11 @@ public class LocalFileContentProvider extends ContentProvider {
         String path = DataManager.getDataPath() + File.separator + uri.getPath();
         File target = new File(path);
         if(!target.exists()) path = DataManager.get404Path();
-        if
+            else if(target.isDirectory()){
+                if(new File(target, ConstFieleds.Index_Html).exists())
+                    path += File.separator + ConstFieleds.Index_Html;
+            }
+        // TODO: resolve dictionary default index web file
         Logger.si("LocalFileContentProvider: Loading file "+ path);
         return ParcelFileDescriptor.open(new File(path),ParcelFileDescriptor.MODE_READ_WRITE);
     }

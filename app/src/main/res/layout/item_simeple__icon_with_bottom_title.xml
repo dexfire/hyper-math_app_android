@@ -8,7 +8,7 @@
         android:layout_width="@dimen/default_large_icon_size"
         android:layout_height="@dimen/default_large_icon_size"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/default_margin" />
+        android:layout_marginTop="@dimen/default_margin_normal" />
 
     <TextView
         android:id="@+id/title"

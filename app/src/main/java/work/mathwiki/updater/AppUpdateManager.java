@@ -61,16 +61,13 @@ public class AppUpdateManager {
         checkAppUpdate(context,(has_update,updateInfo,responseInfo)->{
             log.i("get update info okay...");
             if(has_update){
+                log.i("find new version "+ updateInfo.version_name+" # "+updateInfo.version_code);
                 if(AppUpdateManager.getInstance().ifItNewVersion(context,updateInfo)){
                     showAppUpdateDialog(context,updateInfo);
                 }
             }else{
                 log.e("更新错误： "+responseInfo.response_code+" "+responseInfo.response_message);
                 // TODO: 分析错误原因
-                switch (responseInfo.response_code){
-
-                }
-
             }
         });
         // TODO: check
