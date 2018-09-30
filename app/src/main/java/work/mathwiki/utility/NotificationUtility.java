@@ -25,6 +25,7 @@ import android.widget.Toast;
 import work.mathwiki.MainActivity;
 import work.mathwiki.R;
 import work.mathwiki.core.network.AppUpdateInfo;
+import work.mathwiki.views.StyledToast;
 
 
 public class NotificationUtility {
@@ -81,9 +82,9 @@ public class NotificationUtility {
     }
 
     public static void makeShortToast(Context context,String text){
-        Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
+        StyledToast.makeText(context,StyledToast.TYPE_INFO_GREEN,text,Toast.LENGTH_SHORT).show();
     }
     public static void makeLongToast(Context context,String text){
-        Toast.makeText(context,text,Toast.LENGTH_LONG).show();
+        StyledToast.makeText(context,StyledToast.TYPE_INFO_BLUE,text,Toast.LENGTH_LONG).show();
     }
 }
