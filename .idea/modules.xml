@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/MathWiki.iml" filepath="$PROJECT_DIR$/MathWiki.iml" />
       <module fileurl="file://G:/android/projects/mathwiki/MathWikiiml" filepath="G:/android/projects/mathwiki/MathWikiiml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/markdown/markdown.iml" filepath="$PROJECT_DIR$/markdown/markdown.iml" />
+      <module fileurl="file://$PROJECT_DIR$/waterflowprogressbar/waterflowprogressbar.iml" filepath="$PROJECT_DIR$/waterflowprogressbar/waterflowprogressbar.iml" />
     </modules>
   </component>
 </project>
