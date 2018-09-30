@@ -18,7 +18,7 @@ import work.mathwiki.core.logger.Logger;
  */
 
 public class ExtendedActivity extends AppCompatActivity {
-    private Handler handler;
+    private static Handler handler;
     private WindowManager mWindowManager;
     private Logger logger;
     private int mScreenHeight;
@@ -78,13 +78,13 @@ public class ExtendedActivity extends AppCompatActivity {
         }
     }
 
-    public Handler getHandler(){
-        return this.handler;
+    public static Handler getHandler(){
+        return handler;
     }
 
     public void post(Runnable runnable){
         getBaseContext();
-        this.handler.post(runnable);
+        handler.post(runnable);
     }
 
     public WindowManager getWindowManager(){
