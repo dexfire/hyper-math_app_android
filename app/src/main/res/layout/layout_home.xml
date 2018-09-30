@@ -19,7 +19,7 @@
             android:id="@+id/home_addr"
             style="@android:style/Widget.Material.EditText"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/default_medium_icon_size"
+            android:layout_height="@dimen/text_size_body_primary"
             android:layout_toLeftOf="@id/fragment_browser_btn_goto"
             android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/default_margin_normal"
