@@ -1,6 +1,7 @@
 package work.mathwiki.updater;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
@@ -22,6 +23,8 @@ import work.mathwiki.R;
 import work.mathwiki.core.logger.Logger;
 import work.mathwiki.core.network.AppUpdateInfo;
 import work.mathwiki.core.network.HttpResponseInfo;
+import work.mathwiki.core.network.IDownloadManager;
+import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.NotificationUtility;
 
 /**
@@ -52,7 +55,15 @@ public class AppUpdateManager {
         return instance;
     }
 
-    public void checkUpdates(Context context){
+    /***
+     *  用于应用自启时候检查更新，设置了默认的更新回调：
+     *      1. 如果没有更新则什么也不做。
+     *      2. 如果有App更新，弹出更新提示框，忽略数据更新，如果取消了App更新，再处理数据更新。
+     *      3. 如果没有App更新，有数据更新，则自动后台更新数据。
+     *
+     * @param context
+     */
+    public void autoCheckUpdates(Context context){
         // TODO: 未实现
         //        if(checkAppUpdate()){
 //
@@ -63,26 +74,35 @@ public class AppUpdateManager {
             if(has_update){
                 log.i("find new version "+ updateInfo.version_name+" # "+updateInfo.version_code);
                 if(AppUpdateManager.getInstance().ifItNewVersion(context,updateInfo)){
-                    showAppUpdateDialog(context,updateInfo);
+                    showAppUpdateDialog(context, updateInfo, dialog -> {
+                        checkDataUpdate();
+                    });
+                }else{  // latest version, check data update
+                    checkDataUpdate();
                 }
-            }else{
+            }else{ // fail to check update
                 log.e("更新错误： "+responseInfo.response_code+" "+responseInfo.response_message);
                 // TODO: 分析错误原因
+                checkDataUpdate();
             }
         });
+
+
         // TODO: check
     }
 
-    public void checkAppUpdate(Context context,AppUpdateCheckCallback callback){
-        if(callback==null){
-            log.e("检查更新时未设置回调函数！");
-            return;
-        }
+    /***
+     *  检查app是否有更新版本。
+     *
+     * @param context
+     * @param callback @NonNull (Null means checkUpdate and do nothing)
+     */
+    public void checkAppUpdate(Context context,@NonNull AppUpdateCheckCallback callback){
         Runnable runnable = () -> {
-            AppUpdateInfo updateInfo = null;
-            HttpResponseInfo responseInfo = new HttpResponseInfo();
-            boolean hasUpdate = false;
             try {
+                AppUpdateInfo updateInfo = null;
+                HttpResponseInfo responseInfo = new HttpResponseInfo();
+                boolean hasUpdate = false;
                 URL url = new URL("https","api.github.com","/repos/dexfire/mathwiki/releases/latest");
                 HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
@@ -119,7 +139,7 @@ public class AppUpdateManager {
 //                        log.i(Content);
 //                    }
                     updateInfo = pharseUpdateJSON(reader);
-                }else{
+                }else{  // if responseCode is NOT 200
                     hasUpdate = false;
                     log.e("检查更新失败, " + responseInfo.response_code+" "+ connection.getResponseMessage());
                 }
@@ -197,10 +217,20 @@ public class AppUpdateManager {
 
     private void startDownloadInstallFromUrl(Context context,AppUpdateInfo updateInfo){
         // TODO: 未实现
-        NotificationUtility.makeShortToast(context,"拼命下载更新中...");
+        NotificationUtility.makeShortToast(context,"开始下载更新...");
+        if(updateInfo.download_url.startsWith(ConstFieleds.http)){
+            IDownloadManager.downloadOverHttp(context,updateInfo.download_url,(resultCode, filePath) ->{
+                //TODO: 未实现
+            });
+        }else if (updateInfo.download_url.startsWith(ConstFieleds.https)){
+            IDownloadManager.downloadOverHttp(context,updateInfo.download_url,(resultCode, filePath) ->{
+                //TODO: 未实现
+            });
+        }
+
     }
 
-    private void showAppUpdateDialog(Context context, AppUpdateInfo info){
+    private void showAppUpdateDialog(Context context, AppUpdateInfo info, @NonNull DialogInterface.OnDismissListener dismissListener){
         AppCompatDialog dialog =  NotificationUtility.makeAppUpdateDialog(context,info);
         ((AppCompatTextView)dialog.findViewById(R.id.text)).setText(info.toString());
         View bt_ok = dialog.findViewById(R.id.button_ok);
@@ -221,6 +251,7 @@ public class AppUpdateManager {
         close.setOnClickListener(v->{
             dialog.dismiss();
         });
+        dialog.setOnDismissListener(dismissListener);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
     }
