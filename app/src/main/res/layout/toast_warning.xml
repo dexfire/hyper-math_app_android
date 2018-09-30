@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroung_round_corner_orange">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/default_mini_icon_size"
+        android:layout_height="@dimen/default_mini_icon_size"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/default_margin_normal"
+        android:layout_marginRight="1dp"
+        android:src="@drawable/ic_info"
+        android:tint="@color/white"
+        android:layout_centerVertical="true"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/icon"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_body_primary"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/default_margin_normal"
+        android:layout_marginLeft="0dp"/>
+</RelativeLayout>
