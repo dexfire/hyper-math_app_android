@@ -38,7 +38,7 @@ It's under-develop now.
 ### Core
 
 - [x] Local html book viewer.
-- [ ] Some sample page.
+- [x] Some sample page.
 - [ ] Popup tips box!
 - [ ] View *.md source & edit & contribute(Wiki-like).
 - [ ] Update data from server.
@@ -65,15 +65,21 @@ It's under-develop now.
 ### UI
 
 - [x] Bootstrap style.
+- [x] Welcome pages.
 - [ ] Context float box.
 - [ ] Theme manager which dynmically changes the app & web style.
 - [ ] Custom Loading view, Deepin installer or tieba-client-like ball water tank appearence.
 
 ### Extra
 
+- [x] Markdown: converter -> CommonMarkJava Library.
+- [x] Markdown: notes management page.
 - [ ] Markdown: basic note editor.
 - [ ] Markdown: local preview.
 - [ ] Markdown: image upload.
+- [ ] Markdown: katex plugin.
+- [ ] Markdown: katex formula marks(1,2,3,4...) extension.
 - [ ] Katex formula support.
 - [ ] Collect reading times, online comment.
 - [ ] Dashboard.
+- [ ] MarkPen background mark.
