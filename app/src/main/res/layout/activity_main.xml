@@ -14,11 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <work.mathwiki.views.Tabhost
+    <!--work.mathwiki.views.Tabhost
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_navi_bar_height"
-        android:layout_gravity="left" />
+        android:layout_gravity="left" /-->
 
     <android.support.design.widget.NavigationView
         android:id="@+id/bottom_navigation"
