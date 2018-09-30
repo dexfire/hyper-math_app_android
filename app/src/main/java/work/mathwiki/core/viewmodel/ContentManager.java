@@ -1,4 +1,4 @@
-package work.mathwiki.core.content;
+package work.mathwiki.core.viewmodel;
 
 /***
  *  用于管理 MainActivity 中的 Container 展示的 View视图

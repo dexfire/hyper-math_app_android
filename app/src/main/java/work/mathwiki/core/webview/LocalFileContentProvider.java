@@ -1,4 +1,4 @@
-package work.mathwiki.core.content;
+package work.mathwiki.core.webview;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

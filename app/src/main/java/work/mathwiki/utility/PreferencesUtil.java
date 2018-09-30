@@ -1,13 +1,12 @@
-package work.mathwiki.preferences;
+package work.mathwiki.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Shader;
-import android.preference.Preference;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.prefs.Preferences;
+
+import work.mathwiki.core.logger.Logger;
 
 /**
  * Created by Dexfire on 2018/8/28 0028.
@@ -16,25 +15,34 @@ import java.util.prefs.Preferences;
 public class PreferencesUtil {
 
     private static final String Preferences_Name = "AppSettings";
-
+    private static Logger log;
     private static PreferencesUtil instance = null;
+    private Context savedContext = null;
     private SharedPreferences mPreferences = null;
     private SharedPreferences.Editor mEditor = null;
 
     public static PreferencesUtil getInstance() {
-        if(instance==null){
-            synchronized (PreferencesUtil.class){
-                if(instance==null)
-                    instance = new PreferencesUtil();
-            }
+        if(instance!=null){
+            return instance;
+        }else{
+            log.ee("You must run init() first.");
+            return null;
         }
-        return instance;
     }
 
     private PreferencesUtil() {
+        log = Logger.build("PreferenceUtil")
     }
 
-    private void init(Context context){
+    public void init(Context context){
+        savedContext = context;
+        if (instance == null){
+            synchronized (PreferencesUtil.class){
+                if (instance==null){
+                    instance = new PreferencesUtil();
+                }
+            }
+        }
         if(mPreferences==null || mEditor==null){
             mPreferences =  context.getSharedPreferences(Preferences_Name,Context.MODE_PRIVATE);
             mEditor = mPreferences.edit();

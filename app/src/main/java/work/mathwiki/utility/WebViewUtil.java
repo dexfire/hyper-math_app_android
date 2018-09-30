@@ -8,7 +8,7 @@ import android.webkit.WebView;
  *  设置WebView的通用属性的 Tool class
  */
 
-public class WebViewSetup {
+public class WebViewUtil {
     public static void initializeWebView(WebView webView){
         WebSettings webSettings = webView.getSettings();
         webSettings.setAllowFileAccess(true);

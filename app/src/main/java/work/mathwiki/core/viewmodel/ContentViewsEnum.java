@@ -1,4 +1,4 @@
-package work.mathwiki.core.content;
+package work.mathwiki.core.viewmodel;
 
 public enum ContentViewsEnum {
     home,
