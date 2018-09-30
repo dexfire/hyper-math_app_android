@@ -24,7 +24,6 @@
             android:theme="@style/BiliPink.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,9 +39,12 @@
             android:name=".activities.CollectionsActivity"
             android:label="@string/title_activity_collectings"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name="com.exyui.android.debugbottle.components.DTDrawerActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="debug-bottle v1.1.1"/>
         <provider
-            android:name=".core.content.LocalFileContentProvider"
+            android:name=".core.webview.LocalFileContentProvider"
             android:authorities="work.mathwiki.data"
             android:exported="false" />
 
