@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="text_size_body_primary">13.0sp</dimen>
+    <dimen name="text_size_body_primary">14.0sp</dimen>
     <dimen name="text_size_body_secondary">12.0sp</dimen>
     <dimen name="text_size_headline">16.0sp</dimen>
     <item name="text_size_large" type="dimen">@dimen/text_size_subtitle</item>
@@ -33,6 +33,9 @@
     <dimen name="default_mini_icon_size">24dp</dimen>
     <dimen name="default_medium_icon_size">40dp</dimen>
     <dimen name="default_large_icon_size">60dp</dimen>
+
+    <dimen name="default_round_corner_normal">2dp</dimen>
+
     <!-- 参考了Outlook的布局 -->
     <dimen name="default_toolbar_height">48dp</dimen>
 
@@ -67,4 +70,7 @@
     <dimen name="editor_toolbar_container_height">30dp</dimen>
 
     <dimen name="round_rectangle_button_corner_radius">2dp</dimen>
+    <dimen name="fragment_notes_list_card_height">40dp</dimen>
+    <dimen name="fragment_notes_list_card_icon_size">36dp</dimen>
+
 </resources>

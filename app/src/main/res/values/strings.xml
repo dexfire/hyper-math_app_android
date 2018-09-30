@@ -47,7 +47,7 @@
     <string name="title_activity_settings">设置</string>
     <string name="title_activity_collectings">收藏</string>
 
-    <!-- Strings related to Settings -->
+    <!-- Strings related to Settings -->`
     <string name="permission_apply">权限申请</string>
     <string-array name="permissions_notation">
         <item>需要读取存储卡数据。</item>
@@ -55,6 +55,14 @@
         <item>获取您的唯一标识信息能帮助我们提升用户体验，这不是必选项。</item>
     </string-array>
 
+    <string-array name="settings_items">
+        <item>General_First_Welcome_Splash_Showed</item>
+        <item>General_Allow_Download_via_Mobile</item>
+        <item>Markdown_Editor_Auto_Changeline</item>
+        <item>Markdown_Editor_Highlight_Level</item>
+        <item>Markdown_Editor_AutoComplete</item>
+        <item>Markdwon_Editor_Space_Indent</item>
+    </string-array>
 
     <string name="title_activity_welcome_guide">改变你的学习 ！</string>
 
