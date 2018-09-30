@@ -11,7 +11,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 
 import work.mathwiki.R;
-import work.mathwiki.utility.WebViewSetup;
+import work.mathwiki.utility.WebViewUtil;
 
 /**
  * Created by Dexfire on 2018/8/28 0028.
@@ -29,7 +29,7 @@ public class DocsViewerActivity extends AppCompatActivity {
         mWebView = findViewById(R.id.activity_docs_viewer_webview);
         mHeaderContainer = findViewById(R.id.activity_docs_viewer_titlebar);
         mBottomContainer = findViewById(R.id.activity_docs_viewer_bottombar);
-        WebViewSetup.initializeWebView(mWebView);
+        WebViewUtil.initializeWebView(mWebView);
     }
 
     @Override

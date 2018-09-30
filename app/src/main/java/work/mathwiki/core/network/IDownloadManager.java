@@ -9,12 +9,18 @@ import android.os.Environment;
 import android.util.JsonReader;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.cert.Certificate;
@@ -26,6 +32,7 @@ import retrofit2.Retrofit;
 import work.mathwiki.MainActivity;
 import work.mathwiki.core.logger.Logger;
 import work.mathwiki.utility.ClipBoardUtility;
+import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.NotificationUtility;
 
 
@@ -48,7 +55,68 @@ public class IDownloadManager {
                 .build();
     }
 
-    public static void downloadOverHttps(Context context){
+    //                switch (url.getProtocol()){
+//                    case ConstFieleds.http:
+//                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//
+//                        break;
+//                    case ConstFieleds.https:
+//                        HttpsURLConnection
+//                        break;
+//                }
+
+    /***
+     *  下载一个文件，这个文件由本类来管理。
+     *
+     * @param context
+     * @param download_url
+     * @param callback
+     */
+    public static void downloadOverHttp(Context context, String download_url, DownloadResultHandleCallback callback){
+        Runnable runnable = () -> {
+            try {
+                String filePath = context.getExternalCacheDir().toString();
+                int index = download_url.lastIndexOf("/")+1;
+                if (index<download_url.length()){
+                    filePath += File.pathSeparator + download_url.substring(index);
+                }else{
+                    filePath += File.pathSeparator + "data.bin";
+                }
+
+                URL url = URI.create(download_url).toURL();
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                    FileWriter writer = new FileWriter(filePath);
+                    InputStreamReader reader = new InputStreamReader( connection.getInputStream() , connection.getContentEncoding());
+                    char[] buffer = new char[2048];
+                    int ch;
+                    while((ch=reader.read(buffer))!=-1){
+                        writer.write(buffer);
+                    }
+                    writer.close();
+                    reader.close();
+
+                }else{
+                    callback.onDownloadResult(DownloadResultHandleCallback.RESULT_FAILED,filePath);
+                }
+
+
+
+            } catch (IOException e) {
+                if (Logger.DEBUG){
+                    if (e instanceof MalformedURLException){
+                        log.e("error app_update_url "+ download_url);
+                    }else{
+                        log.e("error occurs when downloadding :"+ download_url);
+                    }
+
+                    e.printStackTrace();
+                }
+            }
+        };
+        new Thread(runnable).start();
+    }
         // on okhttp: create a named Runnable
 //
 //        Runnable runnable = new Runnable(){
@@ -133,7 +201,7 @@ public class IDownloadManager {
 //            }
 //        };
 //        new Thread(runnable).start();
-    }
+
 
     public static void downloadWithSystemDM(String link){
 

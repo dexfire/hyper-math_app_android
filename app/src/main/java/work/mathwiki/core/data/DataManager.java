@@ -5,8 +5,7 @@ import android.os.Environment;
 import java.io.File;
 import java.util.List;
 
-import work.mathwiki.core.content.ContentManager;
-import work.mathwiki.core.content.LocalFileContentProvider;
+import work.mathwiki.core.webview.LocalFileContentProvider;
 import work.mathwiki.core.logger.Logger;
 
 public class DataManager {
