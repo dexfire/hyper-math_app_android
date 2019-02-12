@@ -134,8 +134,8 @@ public class IDownloadManager {
 //                    if(Logger.DEBUG){
 //                        String info = Logger.toString(connection);
 //                        MainActivity.getHandler().post(() -> {
-//                            log.ii_toast(context,info);
-//                            ClipBoardUtility.copy2cb(context,"github api info",info);
+//                            log.ii_toast(content,info);
+//                            ClipBoardUtility.copy2cb(content,"github api info",info);
 //                        });
 //                    }
 //
@@ -155,9 +155,9 @@ public class IDownloadManager {
 //                        if(Logger.DEBUG){
 //                            String finalContent = Content;
 //                            MainActivity.getHandler().post(() -> {
-//                                NotificationUtility.makeLongToast(context, finalContent);
+//                                NotificationUtility.makeLongToast(content, finalContent);
 //                            });
-//                            ClipBoardUtility.copy2cb(context,"github api result",Content);
+//                            ClipBoardUtility.copy2cb(content,"github api result",Content);
 //                            log.i(Content);
 //                        }
 //                        AppUpdateInfo info = new AppUpdateInfo();
@@ -192,7 +192,7 @@ public class IDownloadManager {
 //                        }  // end while
 //                        jsr.endObject();
 //                        MainActivity.getHandler().post(() -> {
-//                            NotificationUtility.makeAppUpdateDialog(context,info);
+//                            NotificationUtility.makeAppUpdateDialog(content,info);
 //                        });
 //                    }
 //                } catch (IOException e) {
@@ -208,7 +208,7 @@ public class IDownloadManager {
         Uri uri =  Uri.parse(link);
 
 //        if(uri.isHierarchical())
-//        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+//        DownloadManager dm = (DownloadManager) content.getSystemService(Context.DOWNLOAD_SERVICE);
 //        dm.enqueue(new DownloadManager.Request());
         //TODO : not implemented
     }

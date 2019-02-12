@@ -15,27 +15,23 @@ import work.mathwiki.core.logger.Logger;
 public class PreferencesUtil {
 
     private static final String Preferences_Name = "AppSettings";
-    private static Logger log;
+    private static Logger log = Logger.build(PreferencesUtil.class.getName());
     private static PreferencesUtil instance = null;
-    private Context savedContext = null;
     private SharedPreferences mPreferences = null;
     private SharedPreferences.Editor mEditor = null;
 
     public static PreferencesUtil getInstance() {
-        if(instance!=null){
-            return instance;
-        }else{
+        if(instance==null){
             log.ee("You must run init() first.");
-            return null;
         }
+        return instance;
     }
 
     private PreferencesUtil() {
-        log = Logger.build("PreferenceUtil")
+        log = Logger.build("PreferenceUtil");
     }
 
     public void init(Context context){
-        savedContext = context;
         if (instance == null){
             synchronized (PreferencesUtil.class){
                 if (instance==null){
@@ -49,45 +45,42 @@ public class PreferencesUtil {
         }
     }
 
-    public String getString(Context context,String name){
-        init(context);
+    public String getString(String name){
         return mPreferences.getString(name,"");
     }
 
-    public String getString(Context context,String name,String fb){
-        init(context);
+    public String getString(String name,String fb){
         return mPreferences.getString(name,fb);
     }
 
-    public int getInt(Context context,String name){
-        init(context);
+    public int getInt(String name){
         return mPreferences.getInt(name,0);
     }
 
-    public int getInt(Context context,String name,int fb){
-        init(context);
+    public int getInt(String name,int fb){
         return mPreferences.getInt(name,fb);
     }
 
-    public Set<String> getStringSet(Context context,String name){
-        init(context);
+    public Set<String> getStringSet(String name){
         return mPreferences.getStringSet(name,new HashSet<String>());
     }
 
     public boolean getBoolean(Context context, String name,boolean fb){
-        init(context);
         return mPreferences.getBoolean(name,fb);
     }
 
-    public void putInt(Context context,String name,int val){
-        init(context);
+    public void putInt(String name,int val){
         mEditor.putInt(name,val);
         mEditor.commit();
     }
 
-    public void putString(Context context,String name,String val){
-        init(context);
+    public void putString(String name,String val){
         mEditor.putString(name,val);
+        mEditor.commit();
+    }
+    
+    public void putBoolean(String name,Boolean val){
+        mEditor.putBoolean(name,val);
         mEditor.commit();
     }
 }

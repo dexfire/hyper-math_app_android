@@ -97,12 +97,12 @@ public class BrowserFragment extends Fragment {
         webSettings.setDisplayZoomControls(false);
     }
 
-    View.OnScrollChangeListener mWebViewScollListener = new View.OnScrollChangeListener() {
-        @Override
-        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-            //TODO: 自动隐藏底部导航和顶部Tab
-        }
-    };
+//    View.OnScrollChangeListener mWebViewScollListener = new View.OnScrollChangeListener() {
+//        @Override
+//        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//            //TODO: 自动隐藏底部导航和顶部Tab
+//        }
+//    };
 
     public boolean canGoBack(){
         return mWebView.canGoBack();

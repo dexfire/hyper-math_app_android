@@ -2,6 +2,6 @@ package work.mathwiki.core.viewmodel;
 
 public enum ContentViewsEnum {
     home,
-    context,
+    content,
     toys,
 }

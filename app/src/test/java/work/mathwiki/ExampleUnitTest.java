@@ -2,6 +2,12 @@ package work.mathwiki;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.lang.reflect.Field;
+
+import work.mathwiki.common.base.ExtendedActivity;
+import work.mathwiki.core.settings.SettingsManager;
+
 import static org.junit.Assert.*;
 
 /**
@@ -17,5 +23,34 @@ public class ExampleUnitTest {
             System.out.print("junt test case "+i+"\n");
     }
 
-
+//    @Test
+//    public void TestReflect() throws Exception{
+//        Class cl = SettingsManager.ConfigNames.class;
+//        Field[] fields = cl.getFields();
+//        for (Field f : fields){
+//            System.out.println(f.getName());
+//            System.out.println(f.toGenericString());
+//        }
+//        System.out.println("\n\n=========================\n\n");
+//        Class cll = SettingsManager.ConfigNames.class;
+//        SettingsManager.ConfigNames cn = new SettingsManager.ConfigNames();
+//        Field[] fieldss = cl.getFields();
+//        for (Field f : fieldss){
+//            System.out.println(f.getName());
+//            System.out.println(f.get(cn));
+//            System.out.println(f.toGenericString());
+//        }
+//
+//        System.out.println("\n\n=========================\n\n");
+//        cll = SettingsManager.ConfigNames.class;
+//        cn = null;
+//        fieldss = cl.getFields();
+//        for (Field f : fieldss){
+//            System.out.println(f.getName());
+//            System.out.println(f.get(cn));
+//            System.out.println(f.toGenericString());
+//        }
+//
+//
+//    }
 }

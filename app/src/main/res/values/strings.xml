@@ -5,13 +5,13 @@
     <string name="title_learning">学习</string>
     <string name="title_context">目录</string>
     <string name="title_more">更多</string>
-    <string name="title_toybox">玩具</string>
+    <string name="title_toybox">学习</string>
     <string name="title_notifications">通知</string>
     <string name="title_night_mode">夜间模式</string>
     <string name="title_settings">设置</string>
     <string name="title_theme">主题</string>
     <string name="title_note">笔记</string>
-    <string name="title_goto">飞机</string>
+    <string name="title_goto">搜索</string>
     <string name="title_collection">收藏</string>
     <string name="title_history">历史</string>
     <string name="title_search">搜索</string>
@@ -64,7 +64,7 @@
         <item>Markdwon_Editor_Space_Indent</item>
     </string-array>
 
-    <string name="title_activity_welcome_guide">改变你的学习 ！</string>
+    <string name="title_activity_welcome_guide">改变你的学习方式 ！</string>
 
 
     <!-- 设置 -->
@@ -91,4 +91,24 @@
     <string name="dialog_update_button_ok">好，快更</string>
     <string name="dialog_update_button_no">不更新</string>
     <string name="dialog_update_button_no_more">忽略此版本</string>
+
+    <string name="content_start">继续学习...</string>
+    <string name="content_context">首页</string>
+    <string name="content_limit">极限与连续</string>
+    <string name="content_differential">导数与微分</string>
+    <string name="content_differential_multivariable">多元函数微分</string>
+    <string name="content_differential_equation">微分方程</string>
+    <string name="content_integration">积分</string>
+    <string name="content_integration_definite">定积分</string>
+    <string name="content_integration_indefinite">不定积分</string>
+    <string name="content_integration_multivariable">多重积分</string>
+    <string name="content_integration_vector">向量积分</string>
+    <string name="content_integration_tips">积分技巧</string>
+    <string name="content_geometry">空间解析几何及向量代数</string>
+    <string name="content_infinite_series">无穷级数</string>
+    <string name="content_formula">常用公式</string>
+    <string name="content_alphaset">常用符号</string>
+    <string name="content_about">关于项目</string>
+
+
 </resources>

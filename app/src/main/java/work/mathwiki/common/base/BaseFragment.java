@@ -26,7 +26,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Logger.si("onAttach(Context context) ");
+        Logger.si("onAttach(Context content) ");
     }
 
     @Override

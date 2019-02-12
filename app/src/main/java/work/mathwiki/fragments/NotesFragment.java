@@ -10,12 +10,17 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+
 import work.mathwiki.R;
 import work.mathwiki.common.base.BaseFragment;
 import work.mathwiki.core.notes.NotesAdapter;
+import work.mathwiki.utility.ConstFieleds;
+import work.mathwiki.utility.FileUtil;
 
 public class NotesFragment extends BaseFragment {
 
+    public static final String TAG = NotesFragment.class.getName();
     private RecyclerView recyclerView  = null;
     private NotesAdapter adapter;
 
@@ -42,6 +47,7 @@ public class NotesFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        File notesDir = FileUtil.open(ConstFieleds.Default_Notes_Path);
     }
 
     @Override

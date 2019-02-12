@@ -15,8 +15,8 @@
 
         <item name="colorAccent">@color/colorAccent</item>
         <item name="divider_line_color1">@color/ex6_white_color</item>
-        <item name="common_dock_bg">@color/gray_light</item>
-        <item name="common_bg">@color/white</item>
+        <item name="dock_color">@color/gray_light</item>
+        <item name="dock_color_light">@color/white</item>
     </style>
 
 </resources>

@@ -160,8 +160,11 @@ public class MarkdownEditor extends AppCompatEditText {
     private void onInsertText(CharSequence s, CharSequence chars, int start) {
         lock = true;
         if ("‘\n".equals(chars.toString())){
-            performInsertEnter(getText(),source,start);
+            performInsertEnter(getText(),s,start);
         }
+    }
+
+    private void performInsertEnter(Editable text, CharSequence s, int start) {
     }
 
 

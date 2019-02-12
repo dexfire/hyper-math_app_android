@@ -15,12 +15,13 @@
             android:title="@string/title_context" />
         <item
             android:id="@+id/nav_toybox"
+            android:layout_height="wrap_content"
             android:icon="@drawable/ic_toys"
-            android:title="@string/title_toybox" />
+            android:title="@string/title_more" />
         <item
             android:id="@+id/nav_note"
             android:icon="@drawable/ic_note"
-            android:title="@string/title_note"/>
+            android:title="@string/title_note" />
         <item
             android:id="@+id/nav_collection"
             android:icon="@drawable/ic_collections"

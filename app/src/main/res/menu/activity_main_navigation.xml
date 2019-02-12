@@ -14,11 +14,11 @@
     <item
         android:id="@+id/navigation_note"
         android:icon="@drawable/ic_menu_context"
-        android:title="@string/title_note" />
+        android:title="@string/title_learning" />
 
     <item
         android:id="@+id/navigation_toybox"
         android:icon="@drawable/ic_toys"
-        android:title="@string/title_toybox" />
+        android:title="@string/title_more" />
 
 </menu>

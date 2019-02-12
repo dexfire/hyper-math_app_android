@@ -10,6 +10,8 @@ import android.webkit.WebView;
 
 public class WebViewUtil {
     public static void initializeWebView(WebView webView){
+        // 添加非null检测以防止app空指针崩溃
+        if(webView==null) return;
         WebSettings webSettings = webView.getSettings();
         webSettings.setAllowFileAccess(true);
         webSettings.setAllowContentAccess(true);

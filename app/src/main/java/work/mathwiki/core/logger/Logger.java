@@ -30,6 +30,8 @@ public class Logger {
 
     private String mModuleName;
     public static boolean DEBUG = false;
+    public static boolean LOG_TO_FILE = false;
+    // TODO: 记录日志文件，方便收集crash信息
     private Logger(String moduleName){
         moduleName = moduleName;
     }
@@ -44,8 +46,9 @@ public class Logger {
 
     // region Static Log
     public static void sd(String msg){
-        if(DEBUG)
+        if(DEBUG){
             Log.d(APP_NAME ,msg);
+        }
     }
     public static void sw(String msg){
         if(DEBUG)

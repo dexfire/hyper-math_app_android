@@ -41,4 +41,8 @@ public class FileUtil {
         }
         return result;
     }
+
+    public static File open(String path){
+        return new File(path);
+    }
 }

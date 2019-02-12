@@ -43,7 +43,7 @@ public class DataManager {
     }
 
     public String getContextUrl(){
-        return LocalFileContentProvider.URI_PREFIX +File.separator + "context.html";
+        return LocalFileContentProvider.URI_PREFIX +File.separator + "content.html";
     }
 
     public static String get404Path(){
