@@ -74,7 +74,8 @@ import work.mathwiki.utility.WebViewUtil;
  */
 
 @SuppressLint("SetTextI18n")
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, EasyPermissions.PermissionCallbacks{
 
     public static final String Package_Name = "work.mathwiki";
     public static final String PRODUCT_NAME = "Hyper-Math";
