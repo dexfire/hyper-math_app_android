@@ -8,6 +8,7 @@
     <color name="bg_main">#ffeaeaea</color>
     <color name="divider_line_color_dark">#ffc0c0c0</color>
     <color name="back_color_sel">#7fcccccc</color>
+    <color name="status_bar_color">#CFCFCF</color>
 
     <!-- General Colors -->
 

@@ -37,13 +37,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.baidu.mobstat.StatService;
+//import com.baidu.mobstat.StatService;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 
 import work.mathwiki.R;
 import work.mathwiki.base.activities.swipe.SwipeBackActivity;
-import net.oschina.app.improve.main.ClipManager;
+//import net.oschina.app.improve.main.ClipManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -80,7 +80,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
             finish();
         }
 
-        StatService.setDebugOn(false);
+//        StatService.setDebugOn(false);
         //umeng analytics
 //        MobclickAgent.setDebugMode(false);
 //        MobclickAgent.openActivityDurationTrack(false);
@@ -120,8 +120,8 @@ public abstract class BaseActivity extends SwipeBackActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ClipManager.onResume();
-        StatService.onResume(this);
+//        ClipManager.onResume();
+//        StatService.onResume(this);
 //        MobclickAgent.onPageStart(this.mPackageNameUmeng);
 //        MobclickAgent.onResume(this);
     }
@@ -129,7 +129,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        StatService.onPause(this);
+//        StatService.onPause(this);
 //        MobclickAgent.onPageEnd(this.mPackageNameUmeng);
 //        MobclickAgent.onPause(this);
     }

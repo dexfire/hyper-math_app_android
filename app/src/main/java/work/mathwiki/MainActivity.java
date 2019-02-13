@@ -37,12 +37,15 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import pub.devrel.easypermissions.EasyPermissions;
 import work.mathwiki.activities.SettingsActivity;
 import work.mathwiki.activities.GuideSplashActivity;
 import work.mathwiki.activities.ShareAppActivity;
+import work.mathwiki.base.activities.BaseActivity;
 import work.mathwiki.core.settings.SettingsManager;
 import work.mathwiki.core.viewmodel.ContentManager;
 import work.mathwiki.core.viewmodel.ContentViewsEnum;
@@ -74,7 +77,7 @@ import work.mathwiki.utility.WebViewUtil;
  */
 
 @SuppressLint("SetTextI18n")
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, EasyPermissions.PermissionCallbacks{
 
     public static final String Package_Name = "work.mathwiki";
@@ -97,6 +100,16 @@ public class MainActivity extends AppCompatActivity
     private Logger log;
     private static Handler handler;
     private WebView mWebView;
+
+    public static void show(Context context){
+        IS_ACTIVE = true;
+        context.startActivity(new Intent(context,MainActivity.class));
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_main_ui;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -557,6 +570,16 @@ public class MainActivity extends AppCompatActivity
             return false;
         }
     };
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+
+    }
     //endregion
 
 }
