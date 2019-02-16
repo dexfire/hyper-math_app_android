@@ -2,9 +2,11 @@ package work.mathwiki;
 
 import android.text.TextUtils;
 
+import work.mathwiki.activities.IntroduceActivity;
 import work.mathwiki.base.activities.BaseActivity;
 import work.mathwiki.core.account.AccountHelper;
 import work.mathwiki.core.app.AppOperator;
+import work.mathwiki.utility.AppSharedPreference;
 
 public class LaunchActivity extends BaseActivity {
     @Override
@@ -25,8 +27,9 @@ public class LaunchActivity extends BaseActivity {
         });
     }
 
+    // TODO: 数据迁移检测与执行
     private void doMerge(){
-        private void doMerge() {
+        /*
             // 判断是否是新版本
             if (Setting.checkIsNewVersion(this)) {
                 // Cookie迁移
@@ -49,14 +52,15 @@ public class LaunchActivity extends BaseActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             // 完成后进行跳转操作
             redirectTo();
         }
+    */
+        redirectTo();
     }
 
     private void redirectTo() {
-        if (OSCSharedPreference.getInstance().isFirstInstall()) {
+        if (AppSharedPreference.getInstance().isFirstInstall()) {
             IntroduceActivity.show(this);
             finish();
         } else {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,7 +17,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -185,7 +185,7 @@ public class MainActivity extends BaseActivity
 //        mPager.setAdapter(new FragmentPagesAdapter(getSupportFragmentManager(),list));
 
         // ActionBar 初始化
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //toolbar.setLogo(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
@@ -203,9 +203,11 @@ public class MainActivity extends BaseActivity
 
         // 底部导航三键
         mNavigationView.setNavigationItemSelectedListener(this);
-        BottomNavigationViewEx bnv = findViewById(R.id.navigation);
+        BottomNavigationViewEx bnv = (BottomNavigationViewEx) findViewById(R.id.navigation);
         bnv.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        bnv.setStateListAnimator(null);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            bnv.setStateListAnimator(null);
+        }
     }
 
     private void openPage(ContentViewsEnum which){

@@ -2,12 +2,6 @@ package work.mathwiki;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.lang.reflect.Field;
-
-import work.mathwiki.common.base.ExtendedActivity;
-import work.mathwiki.core.settings.SettingsManager;
-
 import static org.junit.Assert.*;
 
 /**

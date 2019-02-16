@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-apply plugin: 'mtj-circle-plugin'
+//apply plugin: 'mtj-circle-plugin'
 
 android {
     compileSdkVersion 28
@@ -63,13 +63,14 @@ dependencies {
     implementation 'pub.devrel:easypermissions:0.3.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'net.oschina.common:common:0.2.1'
 }
 
-MtjCirclePluginConfig {
-    // 设置appkey
-    appkey = '876a0d33d5'
-    // 设置debug 开关，如果需要查看日志则打开开关，为避免影响性能建议上线前关闭（设置为false）
-    debug = false
-    // 默认启动此插件，如果开发者不需要可以禁用（设置为false）
-    enabled = true
-}
+//MtjCirclePluginConfig {
+//    // 设置appkey
+//    appkey = '876a0d33d5'
+//    // 设置debug 开关，如果需要查看日志则打开开关，为避免影响性能建议上线前关闭（设置为false）
+//    debug = false
+//    // 默认启动此插件，如果开发者不需要可以禁用（设置为false）
+//    enabled = true
+//}
