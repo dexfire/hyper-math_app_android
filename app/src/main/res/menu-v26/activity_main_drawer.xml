@@ -10,11 +10,11 @@
             android:icon="@drawable/ic_menu_home"
             android:title="@string/title_home" />
         <item
-            android:id="@+id/nav_context"
-            android:icon="@drawable/ic_menu_context"
-            android:title="@string/title_context" />
+            android:id="@+id/nav_reading"
+            android:icon="@drawable/ic_menu_reading"
+            android:title="@string/title_reading" />
         <item
-            android:id="@+id/nav_toybox"
+            android:id="@+id/nav_mine"
             android:icon="@drawable/ic_toys"
             android:title="@string/title_toybox" />
         <item

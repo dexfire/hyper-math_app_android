@@ -24,7 +24,7 @@ public class ThemeUtil {
         TypedValue typedValue = new TypedValue();
         context.getResources().getValue(resId,typedValue,true);
         if(typedValue.type>0x1c && typedValue.type < 0x1f){
-            return colorStateList.valueOf(context.getResources().getColor(typedValue.resourceId));
+            return ColorStateList.valueOf(context.getResources().getColor(typedValue.resourceId));
         }
         String resname = typedValue.string.toString();
         if(!resname.endsWith("xml")){

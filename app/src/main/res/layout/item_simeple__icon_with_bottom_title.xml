@@ -5,8 +5,8 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/default_large_icon_size"
-        android:layout_height="@dimen/default_large_icon_size"
+        android:layout_width="@dimen/default_icon_large"
+        android:layout_height="@dimen/default_icon_large"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/default_margin_normal" />
 

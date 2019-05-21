@@ -9,9 +9,17 @@
     <color name="divider_line_color_dark">#ffc0c0c0</color>
     <color name="back_color_sel">#7fcccccc</color>
     <color name="status_bar_color">#CFCFCF</color>
+    <color name="actionbar_background">@color/colorPrimary</color>
+    <color name="list_divider_color">#c8c7cc</color>
+    <color name="main_green">#24cf5f</color>
+    <color name="main_gray">#9A9A9A</color>
+    <color name="main_black">#333</color>
+    <color name="main_background">#F6F6F6</color>
+    <color name="bg_press">#ebebeb</color>\
+    <color name="bg_press_material">#d4d4d4</color>
+    <color name="window_background">#f2f2f2</color>
 
     <!-- General Colors -->
-
     <color name="red">#ffff0000</color>
     <color name="origin">#ffaabbcc</color>
     <color name="red_dark">#ff990000</color>
@@ -66,6 +74,14 @@
     <color name="theme_pink_color_dialog_title" >#ffb85671</color>
     <color name="theme_pink_color_alpha_AA">#aafb7299</color>
 
+    <!-- Text style colors -->
+    <color name="ui_dialog_divider">@color/list_divider_color</color>
+    <color name="ui_dialog_list_text">#5E5E5E</color>
+    <color name="text_dark">#af000000</color>
+    <color name="text_light">#3f000000</color>
+    <color name="light_gray">#1a000000</color>
+    <color name="lightest_gray">#0a000000</color>
+    <color name="bg_touch">@color/lightest_gray</color>
 
     <!-- Colors for TopBarView -->
     <color name="custom_top_bar_background_color">#fffcfcfc</color>
@@ -78,6 +94,29 @@
     <color name="daynight_color_text_body_secondary_light">#ff757575</color>
     <color name="theme_color_text_primary">#333333</color>
 
+    <!-- 下拉刷新时，颜色值 -->
+    <color name="swiperefresh_color1">#ff00ddff</color>
+    <color name="swiperefresh_color2">#ffffbb33</color>
+    <color name="swiperefresh_color3">#ffff4444</color>
+    <color name="swiperefresh_color4">#ffaa66cc</color>
+
+    <!-- 登陆界面 -->
+    <color name="login_line_color">#dededf</color>
+    <color name="login_input_active">#31b968</color>
+    <color name="login_other_color">#cacaca</color>
+    <color name="account_input_bg_color">#33ffffff</color>
+    <color name="account_lock_bg">#ff43815c</color>
+    <color name="account_lock_font_color">#FF68997C</color>
+    <color name="account_input_color">#c9c9c9</color>
+    <color name="account_pressed_true">#14b94d</color>
+    <color name="user_info_message_notice">#E35B5A</color>
+
+    <!-- 更新界面 -->
+    <color name="text_title_color">#111111</color>
+    <color name="text_desc_color">#6a6a6a</color>
+    <color name="text_secondary_color">#9d9d9d</color>
+
+    <!-- oschina colors -->
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="Blue">#ff55a5e3</color>
     <color name="Blue_translucent">#5555a5e3</color>
@@ -410,7 +449,6 @@
     <color name="progressBar">#ff1c8d87</color>
     <color name="purple">#ff800080</color>
     <color name="qgbc_wap_color">#ff4385f5</color>
-    <color name="red_100">#ffea6f5a</color>
     <color name="red_96ea6f5a">#96ea6f5a</color>
     <color name="red_ea6f5a">#ffea6f5a</color>
     <color name="ripple_material_dark">#33ffffff</color>

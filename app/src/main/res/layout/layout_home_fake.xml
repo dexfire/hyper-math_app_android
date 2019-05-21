@@ -44,7 +44,7 @@
             android:weightSum="5"
             android:gravity="center_horizontal">
             <ImageView
-                android:src="@drawable/ic_menu_context"
+                android:src="@drawable/ic_menu_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -65,7 +65,7 @@
             android:weightSum="5"
             android:gravity="center_horizontal">
             <ImageView
-                android:src="@drawable/ic_menu_context"
+                android:src="@drawable/ic_menu_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -84,7 +84,7 @@
             app:layout_columnSpan="5"
             android:gravity="center_horizontal">
             <ImageView
-                android:src="@drawable/ic_menu_context"
+                android:src="@drawable/ic_menu_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -105,7 +105,7 @@
             android:weightSum="5"
             android:gravity="center_horizontal">
             <ImageView
-                android:src="@drawable/ic_menu_context"
+                android:src="@drawable/ic_menu_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -126,7 +126,7 @@
             android:weightSum="5"
             android:gravity="center_horizontal">
             <ImageView
-                android:src="@drawable/ic_menu_context"
+                android:src="@drawable/ic_menu_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView

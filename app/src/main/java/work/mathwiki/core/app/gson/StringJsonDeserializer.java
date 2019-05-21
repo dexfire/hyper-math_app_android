@@ -5,9 +5,10 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
-import net.oschina.app.util.TLog;
 
 import java.lang.reflect.Type;
+
+import work.mathwiki.utility.TLog;
 
 /**
  * Created by qiujuer

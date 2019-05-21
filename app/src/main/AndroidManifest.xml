@@ -45,17 +45,20 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:isGame="false">
+        android:isGame="false"
+        android:fullBackupContent="@xml/backup_descriptor">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/BiliPink.NoActionBar">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -84,7 +87,11 @@
 
         <activity android:name=".activities.MarkdownEditorActivity" />
         <activity android:name=".activities.ShareAppActivity" />
-        <activity android:name=".activities.IntroduceActivity"/>
+        <activity android:name=".introduce.IntroduceActivity"/>
+        <activity android:name=".activities.LicenseActivity"/>
+
+        <activity android:name=".account.LoginActivity"
+            android:theme="@style/Account_Base.App.Theme.NoTitle"/>
     </application>
 
 </manifest>

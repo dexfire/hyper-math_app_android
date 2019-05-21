@@ -31,13 +31,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 
-import net.oschina.app.improve.account.AccountHelper;
+//import net.oschina.app.improve.account.AccountHelper;
+import work.mathwiki.core.account.AccountHelper;
 import work.mathwiki.core.app.gson.DoubleJsonDeserializer;
 import work.mathwiki.core.app.gson.FloatJsonDeserializer;
 import work.mathwiki.core.app.gson.ImageJsonDeserializer;
 import work.mathwiki.core.app.gson.IntegerJsonDeserializer;
 import work.mathwiki.core.app.gson.StringJsonDeserializer;
-import net.oschina.app.improve.bean.Tweet;
+import work.mathwiki.core.bean.Tweet;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;

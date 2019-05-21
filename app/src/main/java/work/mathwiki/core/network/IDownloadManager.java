@@ -40,16 +40,14 @@ public class IDownloadManager {
     private static final String baseUrl = "http://api.github.com/repos/dexfire/mathwiki/releases/latest";
     private static Logger log = Logger.build("IDownloadManager");
     private static IDownloadManager singleInstance = null;
-    private static Context context;
-    public static IDownloadManager getInstance(Context context) {
+    public static IDownloadManager getInstance() {
         if(singleInstance==null){
-            IDownloadManager.context = context;
-            singleInstance = new IDownloadManager(context);
+            singleInstance = new IDownloadManager();
         }
         return singleInstance;
     }
 
-    private IDownloadManager(Context context) {
+    private IDownloadManager() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -103,15 +101,14 @@ public class IDownloadManager {
 
 
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 if (Logger.DEBUG){
+                    e.printStackTrace();
                     if (e instanceof MalformedURLException){
                         log.e("error app_update_url "+ download_url);
                     }else{
                         log.e("error occurs when downloadding :"+ download_url);
                     }
-
-                    e.printStackTrace();
                 }
             }
         };

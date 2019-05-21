@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import com.vladsch.flexmark.ast.Document;
 import com.vladsch.flexmark.html.HtmlRenderer;
@@ -19,7 +20,7 @@ public class MarkdownConverter {
         StringBuilder sb = new StringBuilder();
 
         try {
-            InputStreamReader reader = new InputStreamReader(ins,"utf-8");
+            InputStreamReader reader = new InputStreamReader(ins, StandardCharsets.UTF_8);
             char[] buffer = new char[10240];
             int count;
             while((count=reader.read(buffer))!=-1){

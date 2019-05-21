@@ -17,7 +17,7 @@ public class ConstFieleds {
     public static final String Context_Html = "content.html";
     public static final String http = "http";
     public static final String https = "https";
-
+    public static final String API_SERVER_URL = "http://mathwiki.work";
     public static int Screen_Width = 1080;
     public static int Screen_Height = 1920;
 

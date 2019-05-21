@@ -3,50 +3,40 @@ package work.mathwiki.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import butterknife.BindView;
 import work.mathwiki.R;
+import work.mathwiki.base.fragments.BaseFragment;
 import work.mathwiki.core.webview.LocalWebViewClient;
+import work.mathwiki.utility.WebViewUtil;
 
 /***
  *  A Fragment shows a Browser to the User
  *  the difference between normal Browsers, it shows the local pages
  */
 
-public class BrowserFragment extends Fragment {
+public class BrowserFragment extends BaseFragment {
 
     public static final String TAG = "BrowserFragment";
-    private WebView  mWebView;
-    private EditText mAdressText;
-    private Button mButtonGoto;
-    public BrowserFragment() {
-        super();
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //Activity activity =  getActivity();
-        //if(activity!=null) activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        return inflater.inflate(R.layout.layout_home,container,false);
-    }
+    @BindView(R.id.webview)
+    WebView  mWebView;
+    @BindView(R.id.home_addr)
+    EditText mAdressText;
+    @BindView(R.id.fragment_browser_btn_goto)
+    TextView mButtonGoto;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mWebView = view.findViewById(R.id.webview);
-        mAdressText = view.findViewById(R.id.home_addr);
-        mButtonGoto = view.findViewById(R.id.fragment_browser_btn_goto);
-        mAdressText.setText("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/home.html");
+    protected void initWidget(View root) {
+        super.initWidget(root);
+        WebViewUtil.initializeWebView(mWebView);
+        mAdressText.setText("content://work.mathwiki.data"+"/index.html");
         mButtonGoto.setOnClickListener(v ->{
             mWebView.loadUrl(mAdressText.getText().toString());
         });
@@ -58,6 +48,11 @@ public class BrowserFragment extends Fragment {
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.layout_browser;
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
@@ -66,7 +61,7 @@ public class BrowserFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initWebView();
-        mWebView.loadUrl("file://" + Environment.getExternalStorageDirectory()+"/MathWiki/home.html");
+        mWebView.loadUrl("content://work.mathwiki.data"+"/index.html");
     }
 
     @Override
@@ -75,14 +70,11 @@ public class BrowserFragment extends Fragment {
     }
 
 
-
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         LocalWebViewClient mWebClient = new LocalWebViewClient();
         mWebView.setWebViewClient(mWebClient);
         //mWebView.setOnScrollChangeListener(mWebViewScollListener);
-
-
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setAllowFileAccess(true);
         webSettings.setAllowContentAccess(true);

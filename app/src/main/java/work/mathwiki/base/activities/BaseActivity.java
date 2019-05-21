@@ -70,9 +70,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         setSwipeBackEnable(true);
         if (initBundle(getIntent().getExtras())) {
             setContentView(getContentView());
-
             initWindow();
-
             ButterKnife.bind(this);
             initWidget();
             initData();

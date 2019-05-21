@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import work.mathwiki.R;
+import work.mathwiki.base.activities.BaseActivity;
 
-public class ShareAppActivity extends Activity {
+public class ShareAppActivity extends BaseActivity {
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share_app);
+    protected int getContentView() {
+        return R.layout.activity_share_app;
     }
 }

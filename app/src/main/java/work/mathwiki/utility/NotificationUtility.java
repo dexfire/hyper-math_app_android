@@ -19,9 +19,11 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import butterknife.BindView;
 import work.mathwiki.MainActivity;
 import work.mathwiki.R;
 import work.mathwiki.core.network.AppUpdateInfo;
@@ -39,10 +41,10 @@ public class NotificationUtility {
 
     public static void makeStatusBarNotification(Context context,String title, String content,String subtext, @DrawableRes int icon){
         // TODO: not implemented function
-
         NotificationManager notificationManager =  (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,NOTIFICATION_CHANNEL_ID);
         builder.setContentTitle(title).
+                setSmallIcon(icon).
                 setAutoCancel(true).
                 setContentText(content).
                 setWhen(System.currentTimeMillis()).
@@ -54,12 +56,13 @@ public class NotificationUtility {
     }
 
     public static void makeDialogNotification(Context context,String title, String message){
-
         AppCompatDialog dialog = new AppCompatDialog(context);
         dialog.setTitle(title);
-        AppCompatTextView text = new AppCompatTextView(context);
-        text.setText(message);
-        dialog.setContentView(text);
+        dialog.setContentView(R.layout.dialog_notification_title_content);
+        TextView tv_title = dialog.findViewById(R.id.title);
+        TextView tv_content = dialog.findViewById(R.id.content);
+        tv_title.setText(title);
+        tv_content.setText(message);
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
     }

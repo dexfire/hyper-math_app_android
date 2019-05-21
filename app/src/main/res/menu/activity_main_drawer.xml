@@ -8,23 +8,24 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_home"
-            android:title="@string/title_home" />
+            android:title="@string/title_home"
+            android:checked="true"/>
         <item
-            android:id="@+id/nav_context"
-            android:icon="@drawable/ic_menu_context"
-            android:title="@string/title_context" />
+            android:id="@+id/nav_reading"
+            android:icon="@drawable/ic_menu_reading"
+            android:title="@string/title_reading" />
         <item
-            android:id="@+id/nav_toybox"
+            android:id="@+id/nav_mine"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_toys"
             android:title="@string/title_more" />
         <item
             android:id="@+id/nav_note"
-            android:icon="@drawable/ic_note"
+            android:icon="@drawable/ic_collections"
             android:title="@string/title_note" />
         <item
             android:id="@+id/nav_collection"
-            android:icon="@drawable/ic_collections"
+            android:icon="@drawable/ic_star"
             android:title="@string/title_collection" />
     </group>
 

@@ -22,7 +22,7 @@ public class BasicTestActivity extends ActivityInstrumentationTestCase2 {
         context = getActivity().getApplicationContext();
     }
 
-    public void testStart() throws Exception {
+    public void testStart() {
         Intent intent = new Intent(context,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);

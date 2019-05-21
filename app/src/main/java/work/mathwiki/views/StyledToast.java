@@ -26,22 +26,23 @@ public class StyledToast {
         switch (type){
             case TYPE_INFO_GREEN:
                 // Do nothing
+                layoutId = R.layout.toast_info_green;
                 break;
             case TYPE_INFO_BLUE:
                 layoutId = R.layout.toast_info_blue;
                 break;
             case TYPE_WARNING:
-
+                layoutId = R.layout.toast_warning;
                 break;
             case TYPE_ERROR:
-
+                layoutId = R.layout.toast_error;
                 break;
         }
         View view = ((LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(layoutId,null);
         TextView text = view.findViewById(R.id.message);
         text.setText(resId);
         toast.setView(view);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL |  Gravity.BOTTOM ,0,-500);
+//        toast.setGravity(0 ,0,-200);
         toast.setDuration(durationMs);
         return toast;
     }
@@ -52,22 +53,24 @@ public class StyledToast {
         switch (type){
             case TYPE_INFO_GREEN:
                 // Do nothing
+                layoutId = R.layout.toast_info_green;
                 break;
             case TYPE_INFO_BLUE:
                 layoutId = R.layout.toast_info_blue;
                 break;
             case TYPE_WARNING:
-
+                layoutId = R.layout.toast_warning;
                 break;
             case TYPE_ERROR:
-
+                layoutId = R.layout.toast_error;
                 break;
         }
         View view = ((LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(layoutId,null);
-        TextView text = view.findViewById(R.id.message);
-        text.setText(str);
+        TextView text = null;
+        if(view !=null) text = view.findViewById(R.id.message);
+        if(text !=null) text.setText(str);
         toast.setView(view);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL ,0,-500);
+//        toast.setGravity(Gravity.CENTER_HORIZONTAL |  Gravity.BOTTOM ,0,-200);
         toast.setDuration(durationMs);
         return toast;
     }

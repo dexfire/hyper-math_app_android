@@ -70,7 +70,7 @@ public class MarkdownEditor extends AppCompatEditText {
     }
 
     public void undo(){
-        if (undo.isEmpty()) return;;
+        if (undo.isEmpty()) return;
         // 锁定输入
         lock = true;
         Action last = undo.pop();

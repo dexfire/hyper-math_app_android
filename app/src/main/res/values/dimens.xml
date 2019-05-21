@@ -1,5 +1,11 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!--
+     Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+     https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
@@ -30,14 +36,15 @@
     <dimen name="default_margin_mini">4dp</dimen>
     <dimen name="default_margin_ultra_mini">2dp</dimen>
     <dimen name="default_grid_item_height">40dp</dimen>
-    <dimen name="default_mini_icon_size">24dp</dimen>
-    <dimen name="default_medium_icon_size">40dp</dimen>
-    <dimen name="default_large_icon_size">60dp</dimen>
+    <dimen name="default_icon_mini">24dp</dimen>
+    <dimen name="default_icon_medium">40dp</dimen>
+    <dimen name="default_icon_large">60dp</dimen>
 
     <dimen name="default_round_corner_normal">2dp</dimen>
 
     <!-- 参考了Outlook的布局 -->
     <dimen name="default_toolbar_height">48dp</dimen>
+    <dimen name="cardCornerRadius">3dp</dimen>
 
     <dimen name="width_1in4_size">90dp</dimen>
     <dimen name="width_1in4_with_margin_size">80dp</dimen>
@@ -74,5 +81,47 @@
     <dimen name="fragment_notes_list_card_icon_size">36dp</dimen>
     <dimen name="mine_top_bg_banner_fadingedge_size">24dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <!-- 我的 页面布局 -->
+    <dimen name="mine_top_header_height">160dp</dimen>
+    <dimen name="mine_top_header_icon_size">60dp</dimen>
+    <dimen name="mine_menu_list_height">48dp</dimen>
+    <dimen name="mine_menu_list_icon_size">36dp</dimen>
+    <dimen name="mine_menu_list_text_size">36dp</dimen>
 
+    <!-- html 查看器 -->
+    <dimen name="html_viewer_header_height">60dp</dimen>
+
+    <!-- General dimens for layout or text -->
+
+    <dimen name="space_100">100.0dip</dimen>
+    <dimen name="space_49">49dip</dimen>
+    <dimen name="space_35">35.0dip</dimen>
+    <dimen name="space_16">16.0dip</dimen>
+    <dimen name="space_15">15.0dip</dimen>
+    <dimen name="space_14">14.0dip</dimen>
+    <dimen name="space_13">13.0dip</dimen>
+    <dimen name="space_12">12.0dip</dimen>
+    <dimen name="space_10">10.0dip</dimen>
+    <dimen name="space_8">8.0dip</dimen>
+    <dimen name="space_6">6.0dip</dimen>
+    <dimen name="space_5">5.0dip</dimen>
+    <dimen name="space_4">4.0dip</dimen>
+    <dimen name="space_3">3.0dip</dimen>
+    <dimen name="space_2">2.0dip</dimen>
+
+    <dimen name="dialog_margin">7.0dip</dimen>
+    <dimen name="global_padding">8.0dip</dimen>
+    <dimen name="global_dialog_padding">15.0dip</dimen>
+
+    <dimen name="text_size_18">18.0dip</dimen>
+    <dimen name="text_size_16">16.0dip</dimen>
+    <dimen name="text_size_15">15.0dip</dimen>
+    <dimen name="text_size_14">14.0dip</dimen>
+    <dimen name="text_size_13">13.0dip</dimen>
+    <dimen name="text_size_12">12.0dip</dimen>
+    <dimen name="text_size_11">11.0dip</dimen>
+    <dimen name="text_size_10">10.0dip</dimen>
+    <dimen name="text_regular_primary_size">14.0dip</dimen>
+    <dimen name="text_large_secondary_size">12.0dip</dimen>
+    <dimen name="text_large_primary_size">16.0dip</dimen>
 </resources>

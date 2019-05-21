@@ -1,17 +1,14 @@
 package work.mathwiki;
 
-import android.text.TextUtils;
-
-import work.mathwiki.activities.IntroduceActivity;
+import work.mathwiki.introduce.IntroduceActivity;
 import work.mathwiki.base.activities.BaseActivity;
-import work.mathwiki.core.account.AccountHelper;
 import work.mathwiki.core.app.AppOperator;
 import work.mathwiki.utility.AppSharedPreference;
 
 public class LaunchActivity extends BaseActivity {
     @Override
     protected int getContentView() {
-        return R.layout.app_start_layout;
+        return R.layout.layout_app_start;
     }
 
     @Override

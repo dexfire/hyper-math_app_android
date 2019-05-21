@@ -1,47 +1,26 @@
 package work.mathwiki.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Window;
 
 import work.mathwiki.R;
+import work.mathwiki.base.activities.BaseActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setActionBar(null);
-        setContentView(R.layout.activity_settings);
-        
-        Toolbar  toolbar = findViewById(R.id.toolbar);
-
-
 
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected int getContentView() {
+        return R.layout.activity_settings;
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    /**
-     * Dispatch onPause() to fragments.
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
+    public static void show(Context context) {
+        IS_ACTIVE = true;
+        context.startActivity(new Intent(context, SettingsActivity.class));
     }
 }

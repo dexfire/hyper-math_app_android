@@ -1,3 +1,25 @@
+/* The MIT License (MIT)
+ * Copyright (c) 2018 OSChina.net
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package work.mathwiki.core.account;
 
 import android.annotation.SuppressLint;
@@ -8,16 +30,16 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.view.View;
 
-import net.oschina.app.api.ApiHttpClient;
-import net.oschina.app.bean.Constants;
-import net.oschina.app.cache.CacheManager;
-import net.oschina.app.improve.bean.User;
-import net.oschina.app.improve.notice.NoticeManager;
-import net.oschina.app.improve.tweet.fragments.TweetFragment;
-import net.oschina.app.util.TLog;
+//import net.oschina.app.api.ApiHttpClient;
+//import net.oschina.app.cache.CacheManager;
 import net.oschina.common.helper.SharedPreferencesHelper;
 
 import cz.msebera.android.httpclient.Header;
+import work.mathwiki.core.api.ApiHttpClient;
+import work.mathwiki.core.bean.Constants;
+import work.mathwiki.core.bean.User;
+import work.mathwiki.core.notice.NoticeManager;
+import work.mathwiki.utility.TLog;
 
 /**
  * 账户辅助类，
@@ -151,7 +173,8 @@ public final class AccountHelper {
         NoticeManager.exitServer(application);
 
         // 清理动弹对应数据
-        CacheManager.deleteObject(application, TweetFragment.CACHE_USER_TWEET);
+        // TODO: Cache Manager 代码修改
+//        CacheManager.deleteObject(application, TweetFragment.CACHE_USER_TWEET);
 
         // Logout 广播
         Intent intent = new Intent(Constants.INTENT_ACTION_LOGOUT);

@@ -6,8 +6,8 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/default_mini_icon_size"
-        android:layout_height="@dimen/default_mini_icon_size"
+        android:layout_width="@dimen/default_icon_mini"
+        android:layout_height="@dimen/default_icon_mini"
         android:layout_alignParentLeft="true"
         android:layout_margin="@dimen/default_margin_normal"
         android:layout_marginRight="1dp"

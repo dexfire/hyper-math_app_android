@@ -16,12 +16,13 @@ public class PermissionUtility {
     };
 
     public static void checkAllNeededPermissions(Activity activity){
-        String[] notes = activity.getResources().getStringArray(R.array.permissions_notation);
-        for(int i=0;i<permissions.length;i++){
-//            if(i==0)//checkPermission(activity,permissions[i],notes[i]);
-//                else
-            checkPermission(activity,permissions[i],notes[i]);
-        }
+        ActivityCompat.requestPermissions(activity,permissions, PermissionChecker.PERMISSION_GRANTED);
+//        String[] notes = activity.getResources().getStringArray(R.array.permissions_notation);
+//        for(int i=0;i<permissions.length;i++){
+////            if(i==0)//checkPermission(activity,permissions[i],notes[i]);
+////                else
+//            checkPermission(activity,permissions[i],notes[i]);
+//        }
 
     }
 

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.io.File;
 
 import work.mathwiki.R;
-import work.mathwiki.common.base.BaseFragment;
+import work.mathwiki.base.fragments.BaseFragment;
 import work.mathwiki.core.notes.NotesAdapter;
 import work.mathwiki.utility.ConstFieleds;
 import work.mathwiki.utility.FileUtil;
@@ -42,6 +42,11 @@ public class NotesFragment extends BaseFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_notes;
     }
 
     @Override

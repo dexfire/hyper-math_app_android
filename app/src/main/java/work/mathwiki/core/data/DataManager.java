@@ -28,9 +28,7 @@ public class DataManager {
         File dataDir = new File(Data_Storage_Path);
         if(!dataDir.exists() || !dataDir.isDirectory()) return false;
         File versionDesc = new File(dataDir,Version_Desc_FN);
-        if(versionDesc.exists() || versionDesc.isDirectory()) return false;
-        // TODO : Json to process data
-        return true;
+        return !versionDesc.exists() && !versionDesc.isDirectory();
     }
 
     public static String getHomePath(){

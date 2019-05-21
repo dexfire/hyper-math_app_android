@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -43,7 +44,7 @@ public class AppUpdateManager {
     // 空构造函数
     private AppUpdateManager(){
         ignoredUpdateVersion = new ArrayList<>();
-    };
+    }
 
     // 单例模式
     public static AppUpdateManager getInstance(){
@@ -127,7 +128,7 @@ public class AppUpdateManager {
                     int len = connection.getContentLength();
                     String encording = connection.getContentEncoding();
                     String contentType = connection.getContentType();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 //                    StringBuilder sb = new StringBuilder();
 //                    String line = reader.readLine();
 //                    if (line!=null){
@@ -148,7 +149,6 @@ public class AppUpdateManager {
                 MainActivity.getHandler().post(()->{
                     callback.onCheckResult(finalHasUpdate, finalUpdateInfo,responseInfo);
                 });
-
             } catch (IOException e) {
                 // IO错误来源于 Json时解析
                 if(Logger.DEBUG)
@@ -158,44 +158,51 @@ public class AppUpdateManager {
         new Thread(runnable).start();
     }
 
+    public void checkAppUpdate(Context context){
+
+    }
 
     /***
      *  更新信息采用github api 格式
      *
      * @return update_info ， 当读取错误时结果未知
      */
-    private @NonNull AppUpdateInfo pharseUpdateJSON(Reader reader) throws IOException {
+    private @NonNull AppUpdateInfo pharseUpdateJSON(Reader reader) {
         AppUpdateInfo info = new AppUpdateInfo();
-        JsonReader jsr = new JsonReader(reader);
-        jsr.beginObject();
-        while(jsr.hasNext()){
-            switch (jsr.nextName()){
-                case "tag_name":
-                    info.version_code = jsr.nextInt();
-                    break;
-                case "name":
-                    info.version_name = jsr.nextString();
-                    break;
-                case "assets":
-                    jsr.beginArray();
-                    jsr.beginObject();
-                    while(jsr.hasNext()){
-                        if(jsr.nextName().equals("browser_download_url"))
-                            info.download_url = jsr.nextString();
-                        else
-                            jsr.skipValue();
-                    }
-                    jsr.endObject();
-                    jsr.endArray();
-                    break;
-                case "body":
-                    info.desc = jsr.nextString();
-                    break;
-                default:
-                    jsr.skipValue();
-            }   // end switch
-        }  // end while
-        jsr.endObject();
+        try {
+            JsonReader jsr = new JsonReader(reader);
+            jsr.beginObject();
+            while(jsr.hasNext()){
+                switch (jsr.nextName()){
+                    case "tag_name":
+                        info.version_code = jsr.nextInt();
+                        break;
+                    case "name":
+                        info.version_name = jsr.nextString();
+                        break;
+                    case "assets":
+                        jsr.beginArray();
+                        jsr.beginObject();
+                        while(jsr.hasNext()){
+                            if(jsr.nextName().equals("browser_download_url"))
+                                info.download_url = jsr.nextString();
+                            else
+                                jsr.skipValue();
+                        }
+                        jsr.endObject();
+                        jsr.endArray();
+                        break;
+                    case "body":
+                        info.desc = jsr.nextString();
+                        break;
+                    default:
+                        jsr.skipValue();
+                }   // end switch
+            }  // end while
+            jsr.endObject();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return info;
     }
 
@@ -269,8 +276,7 @@ public class AppUpdateManager {
             }
         }
         // Debug 模式下，始终检查更新
-        if(Logger.DEBUG) return true;
-        return false;
+        return Logger.DEBUG;
     }
 
 }

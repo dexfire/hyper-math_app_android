@@ -14,6 +14,7 @@ public class WebViewUtil {
         if(webView==null) return;
         WebSettings webSettings = webView.getSettings();
         webSettings.setAllowFileAccess(true);
+        // 允许访问 Content 内容源
         webSettings.setAllowContentAccess(true);
         webSettings.setAllowFileAccessFromFileURLs(true);
         webSettings.setAllowUniversalAccessFromFileURLs(true);
